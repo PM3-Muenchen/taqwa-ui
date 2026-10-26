@@ -28,7 +28,7 @@ const meta = {
   },
   render: ({ orientation, loopFocus }) => html`
     <taqwa-toolbar aria-label="Text editing" orientation=${orientation} loop-focus=${String(loopFocus)}>
-      <taqwa-toggle-group aria-label="Alignment">
+      <taqwa-toggle-group aria-label="Alignment" orientation=${orientation}>
         <taqwa-toggle value="start" aria-label="Align start">${icon(TextAlignStart)}</taqwa-toggle>
         <taqwa-toggle value="center" aria-label="Align center">${icon(TextAlignCenter)}</taqwa-toggle>
         <taqwa-toggle value="end" aria-label="Align end">${icon(TextAlignEnd)}</taqwa-toggle>
