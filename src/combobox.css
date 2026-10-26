@@ -20,8 +20,13 @@
     @apply tq:cursor-not-allowed tq:opacity-50;
   }
 
+  /* Chips and input share one wrapping row, so the input always follows the last chip. */
+  .taqwa-combobox-control {
+    @apply tq:flex tq:min-w-0 tq:flex-1 tq:flex-wrap tq:items-center tq:gap-1;
+  }
+
   .taqwa-combobox-chips {
-    @apply tq:flex tq:min-w-0 tq:flex-wrap tq:items-center tq:gap-1;
+    display: contents;
   }
 
   .taqwa-combobox-chip {

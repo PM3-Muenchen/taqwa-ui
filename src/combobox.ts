@@ -100,34 +100,36 @@ export class TaqwaCombobox extends TaqwaListbox {
         ?data-disabled=${this.isDisabled}
         @pointerdown=${this.#onFieldPointerdown}
       >
-        ${this.multiple
-          ? html`<div part="chips" class="taqwa-combobox-chips">${values.map((value) => this.#renderChip(value))}</div>`
-          : nothing}
-        <input
-          part="input"
-          class="taqwa-combobox-input"
-          type="text"
-          role="combobox"
-          autocomplete="off"
-          aria-autocomplete="list"
-          aria-haspopup="listbox"
-          aria-expanded=${this.open ? 'true' : 'false'}
-          aria-controls=${this.listboxId}
-          aria-activedescendant=${this.activeDescendant ?? nothing}
-          aria-label=${this.controlLabel ?? nothing}
-          aria-description=${this.controlDescription ?? nothing}
-          aria-invalid=${this.controlInvalid ?? nothing}
-          aria-required=${this.required ? 'true' : nothing}
-          aria-readonly=${this.readOnly ? 'true' : nothing}
-          placeholder=${this.placeholder || nothing}
-          .value=${text}
-          ?disabled=${this.isDisabled}
-          ?readonly=${this.readOnly}
-          @input=${this.#onInput}
-          @keydown=${this.#onKeydown}
-          @blur=${this.#onBlur}
-          @click=${() => this.setOpen(true, 'input-press')}
-        />
+        <div class="taqwa-combobox-control">
+          ${this.multiple
+            ? html`<div part="chips" class="taqwa-combobox-chips">${values.map((value) => this.#renderChip(value))}</div>`
+            : nothing}
+          <input
+            part="input"
+            class="taqwa-combobox-input"
+            type="text"
+            role="combobox"
+            autocomplete="off"
+            aria-autocomplete="list"
+            aria-haspopup="listbox"
+            aria-expanded=${this.open ? 'true' : 'false'}
+            aria-controls=${this.listboxId}
+            aria-activedescendant=${this.activeDescendant ?? nothing}
+            aria-label=${this.controlLabel ?? nothing}
+            aria-description=${this.controlDescription ?? nothing}
+            aria-invalid=${this.controlInvalid ?? nothing}
+            aria-required=${this.required ? 'true' : nothing}
+            aria-readonly=${this.readOnly ? 'true' : nothing}
+            placeholder=${this.placeholder || nothing}
+            .value=${text}
+            ?disabled=${this.isDisabled}
+            ?readonly=${this.readOnly}
+            @input=${this.#onInput}
+            @keydown=${this.#onKeydown}
+            @blur=${this.#onBlur}
+            @click=${() => this.setOpen(true, 'input-press')}
+          />
+        </div>
         <div class="taqwa-combobox-actions">
           ${canClear
             ? html`<button
