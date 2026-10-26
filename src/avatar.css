@@ -1,0 +1,31 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: inline-block;
+    vertical-align: middle;
+    width: var(--taqwa-avatar-size, 2.5rem);
+    height: var(--taqwa-avatar-size, 2.5rem);
+  }
+
+  .taqwa-avatar {
+    @apply tq:relative tq:block tq:size-full tq:overflow-hidden tq:rounded-full tq:bg-secondary tq:font-heading tq:font-medium tq:uppercase tq:text-secondary-foreground tq:select-none;
+
+    font-size: calc(var(--taqwa-avatar-size, 2.5rem) * 0.38);
+    line-height: 1;
+  }
+
+  .taqwa-avatar-image {
+    @apply tq:absolute tq:inset-0 tq:size-full tq:object-cover;
+
+    visibility: hidden;
+  }
+
+  .taqwa-avatar[data-status="loaded"] .taqwa-avatar-image {
+    visibility: visible;
+  }
+
+  .taqwa-avatar-fallback {
+    @apply tq:absolute tq:inset-0 tq:flex tq:items-center tq:justify-center;
+  }
+}

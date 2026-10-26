@@ -1,0 +1,47 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: inline-block;
+  }
+
+  .taqwa-popup {
+    @apply tq:glass-surface tq:text-body tq:md:text-sm;
+
+    margin: 0;
+    border: none;
+    outline: none;
+  }
+
+  .taqwa-popup__arrow {
+    @apply tq:absolute tq:size-2.5 tq:rotate-45 tq:bg-background;
+  }
+
+  .taqwa-popup__arrow[data-side="top"] {
+    bottom: -0.3125rem;
+  }
+
+  .taqwa-popup__arrow[data-side="bottom"] {
+    top: -0.3125rem;
+  }
+
+  .taqwa-popup__arrow[data-side="left"] {
+    right: -0.3125rem;
+  }
+
+  .taqwa-popup__arrow[data-side="right"] {
+    left: -0.3125rem;
+  }
+
+  .taqwa-popover {
+    @apply tq:flex tq:w-72 tq:flex-col tq:gap-3 tq:rounded-surface tq:p-6;
+  }
+
+  .taqwa-popover__title {
+    @apply tq:font-heading tq:text-base tq:font-semibold;
+  }
+
+  .taqwa-popover__description {
+    @apply tq:text-muted-foreground;
+  }
+}

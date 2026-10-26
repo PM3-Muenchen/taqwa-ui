@@ -1,0 +1,42 @@
+@import "./theme.css";
+
+/* Each element gets this sheet in its own shadow root, so host rules are scoped with :host(tag). */
+@layer components {
+  :host(taqwa-toolbar) {
+    display: block;
+  }
+
+  :host(taqwa-toolbar-group) {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  :host(taqwa-toolbar-group[orientation="vertical"]) {
+    flex-direction: column;
+  }
+
+  :host(taqwa-toolbar-separator) {
+    flex: none;
+    align-self: stretch;
+    background-color: var(--tq-color-border);
+  }
+
+  :host(taqwa-toolbar-separator[orientation="vertical"]) {
+    width: 1px;
+    margin-inline: 0.25rem;
+  }
+
+  :host(taqwa-toolbar-separator[orientation="horizontal"]) {
+    height: 1px;
+    margin-block: 0.25rem;
+  }
+
+  .taqwa-toolbar {
+    @apply tq:glass-surface tq:relative tq:flex tq:flex-wrap tq:items-center tq:gap-1.5 tq:rounded-surface tq:p-1.5;
+  }
+
+  :host([orientation="vertical"]) .taqwa-toolbar {
+    @apply tq:flex-col tq:items-stretch;
+  }
+}

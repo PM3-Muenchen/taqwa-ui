@@ -1,0 +1,16 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .taqwa-toggle-group {
+    @apply tq:flex tq:w-fit tq:max-w-full tq:flex-wrap tq:gap-1 tq:rounded-surface tq:bg-muted tq:p-1;
+  }
+
+  :host([orientation="vertical"]) .taqwa-toggle-group {
+    @apply tq:flex-col;
+  }
+}

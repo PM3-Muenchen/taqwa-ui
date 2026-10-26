@@ -1,0 +1,7 @@
+@import "./theme.css";
+
+@layer components {
+  .taqwa-preview-card {
+    @apply tq:w-72 tq:rounded-surface tq:p-4;
+  }
+}

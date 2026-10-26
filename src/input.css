@@ -1,0 +1,43 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: block;
+  }
+
+  /* Wrapper carries the glass and the border; `<input>` cannot render ::before, so the glass lives here. */
+  .taqwa-input {
+    @apply tq:glass-interactive tq:control-size tq:flex tq:w-full tq:items-center tq:rounded-control tq:border tq:border-input tq:text-foreground;
+
+    --_glass-fill: var(--tq-color-background);
+  }
+
+  .taqwa-input__field {
+    @apply tq:placeholder:text-muted-foreground;
+
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    appearance: none;
+    font: inherit;
+    color: inherit;
+  }
+
+  .taqwa-input:has(> .taqwa-input__field:focus-visible) {
+    outline: 2px solid var(--tq-color-ring);
+    outline-offset: 2px;
+  }
+
+  .taqwa-input:has(> [aria-invalid="true"]) {
+    border-color: var(--tq-color-destructive);
+  }
+
+  .taqwa-input:has(> .taqwa-input__field:disabled) {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}

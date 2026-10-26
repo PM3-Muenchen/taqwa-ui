@@ -1,0 +1,55 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: inline-block;
+    width: 16rem;
+    max-width: 100%;
+  }
+
+  .taqwa-combobox-field {
+    @apply tq:flex tq:min-h-11 tq:w-full tq:cursor-text tq:items-center tq:gap-1 tq:rounded-control tq:border tq:border-input tq:bg-background tq:py-1 tq:pr-1 tq:pl-2.5 tq:md:min-h-10;
+  }
+
+  .taqwa-combobox-field:focus-within {
+    outline: 2px solid var(--tq-color-ring);
+    outline-offset: 2px;
+  }
+
+  .taqwa-combobox-field[data-disabled] {
+    @apply tq:cursor-not-allowed tq:opacity-50;
+  }
+
+  .taqwa-combobox-chips {
+    @apply tq:flex tq:min-w-0 tq:flex-wrap tq:items-center tq:gap-1;
+  }
+
+  .taqwa-combobox-chip {
+    @apply tq:inline-flex tq:h-7 tq:items-center tq:gap-1 tq:rounded-control tq:bg-secondary tq:pr-0.5 tq:pl-2 tq:text-sm tq:text-secondary-foreground;
+  }
+
+  .taqwa-combobox-chip-remove {
+    @apply tq:flex tq:size-5 tq:cursor-pointer tq:items-center tq:justify-center tq:rounded-control tq:bg-transparent tq:p-0;
+
+    border: 0;
+    color: inherit;
+  }
+
+  .taqwa-combobox-input {
+    @apply tq:min-h-9 tq:min-w-24 tq:flex-1 tq:bg-transparent tq:px-1 tq:text-body tq:text-foreground tq:placeholder:text-muted-foreground tq:md:text-sm;
+
+    border: 0;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .taqwa-combobox-actions {
+    @apply tq:flex tq:shrink-0 tq:items-center;
+  }
+
+  .taqwa-combobox-button {
+    @apply tq:flex tq:size-8 tq:cursor-pointer tq:items-center tq:justify-center tq:rounded-control tq:bg-transparent tq:p-0 tq:text-muted-foreground tq:hover:text-foreground tq:disabled:cursor-not-allowed;
+
+    border: 0;
+  }
+}

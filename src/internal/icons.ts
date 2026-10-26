@@ -26,7 +26,7 @@ const cache = new WeakMap<IconNode, string>();
 const escape = (value: unknown) => String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 /** Renders a Lucide icon inline. Decorative by default (`aria-hidden`). Size follows `1em` unless given. */
-export function icon(node: IconNode, size: string | number = '1em') {
+export function icon(node: IconNode, size: string | number = '1em'): ReturnType<typeof unsafeSVG> {
   let inner = cache.get(node);
   if (inner === undefined) {
     inner = node

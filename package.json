@@ -19,12 +19,15 @@
   },
   "files": [
     "dist",
+    "custom-elements.json",
+    "DESIGN.md",
     "LICENSE",
     "README.md"
   ],
   "sideEffects": true,
   "scripts": {
-    "build": "pnpm run build:library && pnpm run build:types",
+    "analyze": "cem analyze --litelement --globs 'src/*.ts' 'src/internal/*.ts' --exclude 'src/*.stories.ts' --exclude 'src/index.ts' --exclude 'src/react.ts' --exclude 'src/jsx.ts' --outdir . && node scripts/generate-frameworks.mjs",
+    "build": "pnpm run analyze && pnpm run build:library && pnpm run build:types",
     "build:library": "vite build",
     "build:types": "tsc --project tsconfig.build.json",
     "build-storybook": "storybook build",
@@ -32,29 +35,44 @@
     "typecheck": "tsc --noEmit"
   },
   "keywords": [
-    "web-components",
+    "astro",
+    "base-ui",
+    "components",
     "lit",
+    "react",
     "tailwindcss",
-    "components"
+    "web-components"
   ],
   "author": "",
   "license": "MIT",
   "packageManager": "pnpm@11.26.0",
   "dependencies": {
     "@floating-ui/dom": "^1.8.0",
+    "@lit/react": "^1.0.8",
     "lit": "^3.3.3",
     "motion": "^13.2.0"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.11.0",
     "@storybook/addon-a11y": "^10.6.0",
     "@storybook/addon-themes": "^10.6.0",
     "@storybook/web-components-vite": "^10.6.3",
     "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.3.0",
     "lucide": "^1.61.0",
     "storybook": "^10.6.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.0",
     "vite": "^8.2.2",
     "zod": "^4.6.7"
-  }
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "customElements": "custom-elements.json"
 }

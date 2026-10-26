@@ -1,0 +1,32 @@
+@import "./theme.css";
+
+@layer components {
+  :host(taqwa-collapsible) {
+    display: block;
+  }
+
+  .taqwa-collapsible {
+    @apply tq:flex tq:w-full tq:flex-col tq:items-start;
+  }
+
+  .taqwa-collapsible-trigger {
+    @apply tq:glass-interactive tq:focus-ring tq:control-size tq:inline-flex tq:cursor-pointer tq:items-center tq:gap-2 tq:rounded-control tq:border tq:border-border tq:font-heading tq:font-medium tq:select-none tq:disabled:cursor-not-allowed tq:disabled:opacity-50;
+
+    margin: 0;
+    font-family: inherit;
+    color: var(--tq-color-foreground);
+    --_glass-fill: var(--tq-color-background);
+  }
+
+  .taqwa-collapsible-indicator {
+    @apply tq:flex tq:size-4 tq:shrink-0 tq:items-center tq:justify-center tq:text-muted-foreground;
+  }
+
+  .taqwa-collapsible-panel {
+    @apply tq:w-full tq:overflow-hidden;
+  }
+
+  .taqwa-collapsible-content {
+    @apply tq:pt-3 tq:text-body tq:md:text-sm;
+  }
+}

@@ -1,0 +1,65 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: block;
+  }
+
+  :host(taqwa-menu:not([submenu])) {
+    display: inline-block;
+  }
+
+  .taqwa-menu-trigger {
+    display: flex;
+  }
+
+  .taqwa-menu-popup {
+    @apply tq:glass-surface tq:min-w-44 tq:overflow-y-auto tq:rounded-surface tq:p-1 tq:outline-none;
+
+    border: none;
+    margin: 0;
+  }
+
+  .taqwa-menu-item {
+    @apply tq:glass-interactive tq:flex tq:min-h-11 tq:w-full tq:cursor-pointer tq:items-center tq:gap-2 tq:rounded-control tq:px-3 tq:text-body tq:select-none tq:md:min-h-10 tq:md:px-2.5 tq:md:text-sm;
+
+    --_glass-fill: transparent;
+    --_glass-tint: var(--tq-color-secondary);
+  }
+
+  :host(:focus-visible) .taqwa-menu-item {
+    @apply tq:outline-2 tq:-outline-offset-2 tq:outline-ring;
+  }
+
+  :host([disabled]) .taqwa-menu-item {
+    @apply tq:cursor-not-allowed tq:opacity-50;
+  }
+
+  .taqwa-menu-indicator {
+    @apply tq:flex tq:size-4 tq:shrink-0 tq:items-center tq:justify-center;
+  }
+
+  .taqwa-menu-dot {
+    @apply tq:size-1.5 tq:rounded-full tq:bg-current;
+  }
+
+  .taqwa-menu-label {
+    @apply tq:min-w-0 tq:flex-1;
+  }
+
+  .taqwa-menu-chevron {
+    @apply tq:ml-auto tq:flex tq:shrink-0 tq:items-center;
+  }
+
+  :host(:dir(rtl)) .taqwa-menu-chevron svg {
+    transform: scaleX(-1);
+  }
+
+  .taqwa-menu-separator {
+    @apply tq:mx-2 tq:my-1 tq:h-px tq:bg-border;
+  }
+
+  ::slotted([slot="label"]) {
+    @apply tq:block tq:px-3 tq:py-1.5 tq:text-sm tq:font-medium tq:text-muted-foreground tq:md:px-2.5;
+  }
+}

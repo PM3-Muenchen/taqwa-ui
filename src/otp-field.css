@@ -1,0 +1,45 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: inline-flex;
+    max-width: 100%;
+    color: var(--tq-color-foreground);
+  }
+
+  .taqwa-otp-field {
+    @apply tq:flex tq:items-center tq:gap-2;
+  }
+
+  .taqwa-otp-field__input {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    min-width: 0;
+    width: 2.75rem;
+    height: 2.75rem;
+
+    @apply tq:focus-ring tq:rounded-control tq:border tq:border-input tq:bg-background tq:text-center tq:text-body tq:text-foreground tq:tabular-nums tq:md:size-10 tq:md:text-sm;
+  }
+
+  @media (width >= 48rem) {
+    .taqwa-otp-field__input {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  .taqwa-otp-field__input[aria-invalid="true"] {
+    @apply tq:border-destructive;
+  }
+
+  .taqwa-otp-field__input:disabled {
+    @apply tq:opacity-50;
+  }
+
+  @media (any-pointer: coarse) {
+    .taqwa-otp-field__input {
+      font-size: 1rem;
+    }
+  }
+}

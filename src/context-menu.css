@@ -1,0 +1,13 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: block;
+  }
+
+  .taqwa-menu-trigger {
+    @apply tq:flex tq:min-h-32 tq:items-center tq:justify-center tq:rounded-surface tq:border tq:border-dashed tq:border-input tq:p-6 tq:text-body tq:text-muted-foreground tq:select-none tq:md:text-sm;
+
+    -webkit-touch-callout: none;
+  }
+}

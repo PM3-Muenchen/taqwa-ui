@@ -1,0 +1,15 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: block;
+  }
+
+  .taqwa-fieldset {
+    @apply tq:flex tq:flex-col tq:gap-6;
+  }
+
+  .taqwa-fieldset__legend {
+    @apply tq:font-heading tq:text-body tq:font-semibold tq:text-foreground tq:md:text-base;
+  }
+}

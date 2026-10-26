@@ -1,0 +1,23 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  ::slotted(form) {
+    @apply tq:flex tq:flex-col tq:gap-6;
+
+    margin: 0;
+  }
+
+  .taqwa-form__error {
+    @apply tq:text-body tq:md:text-sm tq:text-destructive;
+  }
+
+  .taqwa-form__error > p {
+    margin: 0;
+  }
+}

@@ -20,7 +20,7 @@
   --color-muted-foreground: var(--taqwa-color-muted-foreground, color-mix(in oklab, var(--tq-color-foreground) 68%, var(--tq-color-background)));
   --color-accent: var(--taqwa-color-accent, color-mix(in oklab, var(--tq-color-secondary) 45%, var(--tq-color-background)));
   --color-border: var(--taqwa-color-border, color-mix(in oklab, var(--tq-color-foreground) 14%, var(--tq-color-background)));
-  --color-input: var(--taqwa-color-input, color-mix(in oklab, var(--tq-color-foreground) 42%, var(--tq-color-background)));
+  --color-input: var(--taqwa-color-input, color-mix(in oklab, var(--tq-color-foreground) 48%, var(--tq-color-background)));
   --color-ring: var(--taqwa-color-ring, var(--tq-color-primary));
   --color-surface: var(--taqwa-color-surface, color-mix(in oklab, var(--tq-color-background) 66%, transparent));
 

@@ -1,0 +1,24 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: block;
+  }
+
+  :host([orientation="vertical"]) {
+    display: inline-block;
+    align-self: stretch;
+  }
+
+  .taqwa-separator {
+    @apply tq:bg-border;
+
+    height: 1px;
+    width: 100%;
+  }
+
+  .taqwa-separator[data-orientation="vertical"] {
+    height: 100%;
+    width: 1px;
+  }
+}

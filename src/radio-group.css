@@ -1,0 +1,57 @@
+@import "./theme.css";
+
+@layer components {
+  :host(taqwa-radio-group) {
+    display: block;
+  }
+
+  :host(taqwa-radio) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    max-width: 100%;
+    cursor: pointer;
+    color: var(--tq-color-foreground);
+    font-size: var(--tq-text-body);
+    line-height: var(--tq-text-body--line-height);
+  }
+
+  @media (width >= 48rem) {
+    :host(taqwa-radio) {
+      min-height: 2.5rem;
+      font-size: var(--tq-text-sm);
+      line-height: var(--tq-text-sm--line-height);
+    }
+  }
+
+  :host(taqwa-radio[disabled]) {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .taqwa-radio-group {
+    @apply tq:flex tq:flex-col tq:items-start tq:gap-3;
+  }
+
+  .taqwa-radio {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    cursor: inherit;
+
+    @apply tq:focus-ring tq:inline-flex tq:size-5 tq:shrink-0 tq:items-center tq:justify-center tq:rounded-full tq:border tq:border-input tq:bg-background;
+  }
+
+  .taqwa-radio[aria-checked="true"] {
+    @apply tq:border-primary;
+  }
+
+  .taqwa-radio__indicator {
+    @apply tq:block tq:size-2.5 tq:rounded-full tq:bg-primary;
+  }
+
+  .taqwa-radio__label {
+    user-select: none;
+  }
+}

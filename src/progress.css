@@ -1,0 +1,33 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: block;
+  }
+
+  .taqwa-progress {
+    @apply tq:grid tq:w-full tq:gap-2 tq:text-body tq:md:text-sm;
+  }
+
+  .taqwa-progress-header {
+    @apply tq:flex tq:items-baseline tq:justify-between tq:gap-3;
+  }
+
+  .taqwa-progress-label {
+    @apply tq:font-medium tq:text-foreground;
+  }
+
+  .taqwa-progress-value {
+    @apply tq:text-muted-foreground tq:tabular-nums;
+  }
+
+  .taqwa-progress-track {
+    @apply tq:relative tq:h-2 tq:overflow-hidden tq:rounded-full tq:bg-secondary;
+  }
+
+  .taqwa-progress-indicator {
+    @apply tq:absolute tq:inset-y-0 tq:start-0 tq:rounded-full tq:bg-primary;
+
+    width: 0;
+  }
+}

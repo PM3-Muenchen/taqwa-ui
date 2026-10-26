@@ -1,0 +1,19 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: inline-block;
+    width: 16rem;
+    max-width: 100%;
+  }
+
+  .taqwa-autocomplete-input {
+    @apply tq:control-size tq:focus-ring tq:w-full tq:rounded-control tq:border tq:border-input tq:bg-background tq:text-body tq:text-foreground tq:placeholder:text-muted-foreground tq:md:text-sm tq:disabled:cursor-not-allowed tq:disabled:opacity-50;
+
+    font-family: inherit;
+  }
+
+  .taqwa-autocomplete-input[aria-invalid="true"] {
+    border-color: var(--tq-color-destructive);
+  }
+}

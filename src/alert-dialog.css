@@ -1,0 +1,7 @@
+@import "./dialog.css";
+
+@layer components {
+  :host .taqwa-dialog__close {
+    display: none;
+  }
+}

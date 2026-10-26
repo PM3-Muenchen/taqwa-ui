@@ -1,0 +1,11 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: block;
+  }
+
+  .taqwa-checkbox-group {
+    @apply tq:flex tq:flex-col tq:items-start tq:gap-3;
+  }
+}

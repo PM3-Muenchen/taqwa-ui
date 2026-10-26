@@ -1,0 +1,7 @@
+@import "./theme.css";
+
+@layer components {
+  .taqwa-tooltip {
+    @apply tq:rounded-control tq:px-3 tq:py-1.5 tq:font-medium;
+  }
+}

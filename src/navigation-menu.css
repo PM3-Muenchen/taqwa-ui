@@ -1,0 +1,45 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: block;
+  }
+
+  .taqwa-navigation-menu {
+    @apply tq:relative tq:block;
+  }
+
+  .taqwa-navigation-menu-list {
+    @apply tq:m-0 tq:flex tq:list-none tq:flex-col tq:gap-1 tq:p-0 tq:md:flex-row tq:md:items-center;
+  }
+
+  .taqwa-navigation-menu-viewport {
+    @apply tq:glass-surface tq:absolute tq:top-[calc(100%+0.5rem)] tq:left-0 tq:hidden tq:rounded-surface tq:md:block;
+
+    z-index: 0;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  ::slotted([slot="trigger"]) {
+    display: block;
+  }
+
+  :host([panel]) .taqwa-navigation-menu-panel {
+    @apply tq:py-1 tq:md:absolute tq:md:top-[calc(100%+0.5rem)] tq:md:z-10 tq:md:w-max tq:md:p-2;
+
+    max-width: min(25rem, calc(100vw - 2.5rem));
+  }
+
+  .taqwa-navigation-menu-link {
+    @apply tq:glass-interactive tq:focus-ring tq:flex tq:min-h-11 tq:items-center tq:rounded-control tq:px-3 tq:text-body tq:no-underline tq:md:min-h-10 tq:md:px-2.5 tq:md:text-sm;
+
+    --_glass-fill: transparent;
+    --_glass-tint: var(--tq-color-secondary);
+    color: var(--tq-color-foreground);
+  }
+
+  :host([active]) .taqwa-navigation-menu-link {
+    --_glass-fill: var(--tq-color-secondary);
+  }
+}

@@ -1,0 +1,39 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+  }
+
+  .taqwa-field__label {
+    @apply tq:mb-2 tq:text-body tq:font-medium tq:text-foreground tq:md:text-sm;
+
+    cursor: default;
+  }
+
+  .taqwa-field__description,
+  .taqwa-field__error {
+    @apply tq:text-body tq:md:text-sm;
+
+    margin: 0;
+  }
+
+  .taqwa-field__description {
+    @apply tq:mt-2 tq:text-muted-foreground;
+  }
+
+  .taqwa-field__error {
+    @apply tq:text-destructive;
+  }
+
+  .taqwa-field__error > p {
+    margin: 0;
+  }
+
+  .taqwa-field__error:not(:empty) {
+    @apply tq:mt-2;
+  }
+}

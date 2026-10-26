@@ -1,0 +1,65 @@
+@import "./dialog.css";
+
+@layer components {
+  :host([side="bottom"]) .taqwa-dialog__viewport {
+    @apply tq:items-end tq:p-0;
+  }
+
+  :host([side="top"]) .taqwa-dialog__viewport {
+    @apply tq:items-start tq:p-0;
+  }
+
+  :host([side="left"]) .taqwa-dialog__viewport {
+    @apply tq:items-stretch tq:justify-start tq:p-0;
+  }
+
+  :host([side="right"]) .taqwa-dialog__viewport {
+    @apply tq:items-stretch tq:justify-end tq:p-0;
+  }
+
+  :host([side="bottom"]) .taqwa-dialog__popup,
+  :host([side="top"]) .taqwa-dialog__popup {
+    @apply tq:max-w-none;
+
+    max-height: 85dvh;
+  }
+
+  :host([side="bottom"]) .taqwa-dialog__popup {
+    @apply tq:rounded-t-surface tq:rounded-b-none;
+
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  :host([side="top"]) .taqwa-dialog__popup {
+    @apply tq:rounded-t-none tq:rounded-b-surface;
+
+    padding-top: calc(1.5rem + env(safe-area-inset-top, 0px));
+  }
+
+  :host([side="left"]) .taqwa-dialog__popup,
+  :host([side="right"]) .taqwa-dialog__popup {
+    @apply tq:h-full tq:max-w-none tq:rounded-none tq:md:w-[26rem];
+
+    max-height: 100dvh;
+  }
+
+  :host([side="left"]) .taqwa-dialog__popup {
+    @apply tq:md:rounded-r-surface;
+  }
+
+  :host([side="right"]) .taqwa-dialog__popup {
+    @apply tq:md:rounded-l-surface;
+  }
+
+  :host([side="bottom"]) .taqwa-dialog__handle,
+  :host([side="top"]) .taqwa-dialog__handle {
+    @apply tq:mx-auto tq:mb-4 tq:h-1.5 tq:w-12 tq:shrink-0 tq:rounded-full tq:bg-input;
+
+    display: block;
+  }
+
+  :host([side="top"]) .taqwa-dialog__handle {
+    order: 1;
+    margin: 1rem auto 0;
+  }
+}

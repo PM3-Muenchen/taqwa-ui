@@ -1,0 +1,60 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    max-width: 100%;
+    cursor: pointer;
+    color: var(--tq-color-foreground);
+    font-size: var(--tq-text-body);
+    line-height: var(--tq-text-body--line-height);
+  }
+
+  @media (width >= 48rem) {
+    :host {
+      min-height: 2.5rem;
+      font-size: var(--tq-text-sm);
+      line-height: var(--tq-text-sm--line-height);
+    }
+  }
+
+  :host([disabled]) {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .taqwa-checkbox {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    cursor: inherit;
+
+    @apply tq:focus-ring tq:inline-flex tq:size-5 tq:shrink-0 tq:items-center tq:justify-center tq:rounded-control tq:border tq:border-input tq:bg-background tq:text-primary-foreground;
+  }
+
+  .taqwa-checkbox[aria-checked="true"],
+  .taqwa-checkbox[aria-checked="mixed"] {
+    @apply tq:border-primary tq:bg-primary;
+  }
+
+  .taqwa-checkbox[aria-invalid="true"] {
+    @apply tq:border-destructive;
+  }
+
+  .taqwa-checkbox:disabled {
+    @apply tq:cursor-not-allowed;
+  }
+
+  .taqwa-checkbox__indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .taqwa-checkbox__label {
+    user-select: none;
+  }
+}

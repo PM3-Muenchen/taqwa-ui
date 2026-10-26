@@ -1,0 +1,103 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: block;
+    width: 14rem;
+    max-width: 100%;
+    color: var(--tq-color-foreground);
+  }
+
+  :host([orientation="vertical"]) {
+    display: inline-block;
+    width: 2.75rem;
+    height: 10rem;
+  }
+
+  :host([disabled]) {
+    cursor: not-allowed;
+  }
+
+  .taqwa-slider__control {
+    position: relative;
+    width: 100%;
+    height: 2.75rem;
+    touch-action: none;
+    user-select: none;
+  }
+
+  .taqwa-slider__track {
+    position: absolute;
+    top: calc(50% - 0.125rem);
+    left: 0;
+    right: 0;
+    height: 0.25rem;
+
+    @apply tq:rounded-control tq:bg-secondary;
+  }
+
+  .taqwa-slider__indicator {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    inset-inline-start: var(--_start);
+    inline-size: var(--_size);
+
+    @apply tq:rounded-control tq:bg-primary;
+  }
+
+  .taqwa-slider__thumb {
+    position: absolute;
+    top: calc(50% - 1.375rem);
+    inset-inline-start: calc(var(--_pos) - 1.375rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    cursor: pointer;
+
+    @apply tq:focus-ring;
+  }
+
+  .taqwa-slider__pill {
+    --_glass-fill: var(--tq-color-background);
+
+    @apply tq:glass-interactive tq:size-6 tq:rounded-full tq:border tq:border-input tq:bg-background tq:shadow-sm;
+  }
+
+  .taqwa-slider__thumb[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  :host([orientation="vertical"]) .taqwa-slider__control {
+    width: 100%;
+    height: 100%;
+  }
+
+  :host([orientation="vertical"]) .taqwa-slider__track {
+    top: 0;
+    bottom: 0;
+    left: calc(50% - 0.125rem);
+    right: auto;
+    width: 0.25rem;
+    height: auto;
+  }
+
+  :host([orientation="vertical"]) .taqwa-slider__indicator {
+    top: auto;
+    bottom: var(--_start);
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    inline-size: auto;
+    block-size: var(--_size);
+  }
+
+  :host([orientation="vertical"]) .taqwa-slider__thumb {
+    top: auto;
+    inset-inline-start: calc(50% - 1.375rem);
+    bottom: calc(var(--_pos) - 1.375rem);
+  }
+}

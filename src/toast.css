@@ -1,0 +1,102 @@
+@import "./theme.css";
+
+@layer components {
+  /* One sheet serves both elements, so host rules are scoped by tag name. */
+  :host(taqwa-toast-region) {
+    display: block;
+  }
+
+  .taqwa-toast-region-viewport {
+    @apply tq:focus-ring;
+
+    position: fixed;
+    z-index: 1000;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: calc(100% - 2rem);
+    max-width: 24rem;
+  }
+
+  @media (min-width: 48rem) {
+    .taqwa-toast-region-viewport {
+      bottom: 1.5rem;
+      left: auto;
+      right: 1.5rem;
+      margin-inline: 0;
+      width: 24rem;
+    }
+  }
+
+  .taqwa-toast-region-stack {
+    position: relative;
+    width: 100%;
+  }
+
+  :host(taqwa-toast) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    transform-origin: 50% 100%;
+    touch-action: none;
+    user-select: none;
+  }
+
+  :host(taqwa-toast[data-behind]) .taqwa-toast-content {
+    opacity: 0;
+  }
+
+  .taqwa-toast {
+    @apply tq:glass-surface tq:relative tq:w-full tq:rounded-surface tq:text-body tq:md:text-sm;
+  }
+
+  .taqwa-toast-content {
+    @apply tq:flex tq:items-start tq:gap-3 tq:p-4;
+  }
+
+  .taqwa-toast-icon {
+    @apply tq:mt-0.5 tq:flex tq:shrink-0 tq:text-primary;
+  }
+
+  .taqwa-toast[data-type="error"] .taqwa-toast-icon {
+    color: var(--tq-color-destructive);
+  }
+
+  .taqwa-toast[data-type="warning"] .taqwa-toast-icon {
+    color: oklch(0.72 0.16 70);
+  }
+
+  .taqwa-toast-text {
+    @apply tq:flex tq:min-w-0 tq:flex-1 tq:flex-col tq:gap-1;
+  }
+
+  .taqwa-toast-title {
+    @apply tq:m-0 tq:font-heading tq:font-medium;
+  }
+
+  .taqwa-toast-description {
+    @apply tq:m-0 tq:text-muted-foreground;
+  }
+
+  .taqwa-toast-actions {
+    @apply tq:mt-2 tq:flex tq:flex-wrap tq:gap-2;
+  }
+
+  .taqwa-toast-action {
+    @apply tq:focus-ring tq:inline-flex tq:h-9 tq:cursor-pointer tq:items-center tq:rounded-control tq:bg-secondary tq:px-3 tq:text-sm tq:font-medium tq:text-secondary-foreground;
+
+    border: none;
+    font-family: inherit;
+  }
+
+  .taqwa-toast-close {
+    @apply tq:focus-ring tq:flex tq:size-11 tq:shrink-0 tq:cursor-pointer tq:items-center tq:justify-center tq:rounded-control tq:text-muted-foreground tq:md:size-8;
+
+    border: none;
+    background: transparent;
+    font-family: inherit;
+  }
+}

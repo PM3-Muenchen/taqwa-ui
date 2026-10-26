@@ -1,0 +1,68 @@
+@import "./theme.css";
+
+@layer components {
+  :host(taqwa-tabs) {
+    display: block;
+  }
+
+  :host(taqwa-tabs-list) {
+    display: block;
+    position: relative;
+  }
+
+  :host(taqwa-tab) {
+    display: flex;
+    position: relative;
+    z-index: 1;
+    border-radius: var(--tq-radius-control);
+  }
+
+  :host(taqwa-tab:focus-visible),
+  :host(taqwa-tabs-panel:focus-visible) {
+    outline: 2px solid var(--tq-color-ring);
+    outline-offset: 2px;
+  }
+
+  :host(taqwa-tabs-panel) {
+    display: block;
+    border-radius: var(--tq-radius-surface);
+  }
+
+  .taqwa-tabs {
+    @apply tq:flex tq:flex-col tq:gap-4;
+  }
+
+  .taqwa-tabs--vertical {
+    @apply tq:flex-row tq:items-start tq:gap-6;
+  }
+
+  .taqwa-tabs-list {
+    @apply tq:relative tq:flex tq:gap-1 tq:rounded-surface tq:bg-muted tq:p-1;
+  }
+
+  .taqwa-tabs-list--vertical {
+    @apply tq:flex-col;
+  }
+
+  .taqwa-tabs-indicator {
+    @apply tq:glass-surface tq:absolute tq:left-0 tq:top-0 tq:rounded-control;
+  }
+
+  .taqwa-tab {
+    @apply tq:glass-interactive tq:control-size tq:flex tq:w-full tq:cursor-pointer tq:items-center tq:justify-center tq:gap-2 tq:rounded-control tq:font-heading tq:font-medium tq:whitespace-nowrap tq:select-none tq:text-muted-foreground;
+
+    --_glass-fill: transparent;
+  }
+
+  :host(taqwa-tab[data-active]) .taqwa-tab {
+    @apply tq:text-foreground;
+  }
+
+  :host(taqwa-tab[disabled]) .taqwa-tab {
+    @apply tq:cursor-not-allowed tq:opacity-50;
+  }
+
+  .taqwa-tabs-panel {
+    @apply tq:p-4 tq:text-body tq:md:p-6 tq:md:text-sm;
+  }
+}
