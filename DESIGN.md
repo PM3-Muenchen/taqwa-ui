@@ -13,8 +13,8 @@ colors:
   muted: "#EDF3E5"
   on-muted: "#566452"
   accent: "#E6F8CD"
-  border: "#D6DDCF"
-  input: "#838F7E"
+  border: "#CBD8C4"
+  input: "#779271"
   ring: "#2A7221"
   error: "#B42318"
   on-error: "#FAFFF2"
@@ -180,9 +180,12 @@ Neutral steps are mixed from Evergreen into Ivory (`color-mix(in oklab, …)`), 
 
 - muted 5%
 - muted text 68% (6.2:1)
-- border 14%
-- input outline 48% (3.3:1, which meets the 3:1 non-text minimum)
 - accent (selected or highlighted items): Lime cream at 45% on Ivory
+
+Lines (borders and input outlines) use a lighter Evergreen instead of grey: Evergreen and Green mixed 50/50, then into Ivory:
+
+- border 20% (#CBD8C4)
+- input outline 58% (#779271, 3.4:1, which meets the 3:1 non-text minimum)
 
 Every value can be overridden at runtime with a `--taqwa-color-*` custom property on any ancestor.
 
@@ -214,7 +217,7 @@ Depth stays flat and calm.
 - **Floating level (frosted glass):**
   - translucent Ivory (86%)
   - `backdrop-filter: blur(12px)`
-  - a 1px Evergreen hairline edge (9%)
+  - a 1px hairline edge in the border colour
   - a soft, wide evergreen-tinted drop shadow
 - **Interactive controls:** flat at rest, with transparent backgrounds for list and menu rows. Hover mixes 6% Evergreen into the resting fill and press 12%, over 0.2s ease-out. No scale, blur or highlight.
 - **Popups:** fade in with a 2% scale over 0.18s.
