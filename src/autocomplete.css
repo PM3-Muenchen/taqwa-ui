@@ -16,4 +16,9 @@
   .taqwa-autocomplete-input[aria-invalid="true"] {
     border-color: var(--tq-color-destructive);
   }
+
+  /* Suggestions are never checked, so don't reserve the shared listbox check column. */
+  .taqwa-option-indicator {
+    display: none;
+  }
 }
