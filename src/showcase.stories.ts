@@ -28,7 +28,7 @@ const styles = html`<style>
     display: grid;
     gap: 1.5rem;
     padding: 1.5rem;
-    border-radius: 0.875rem;
+    border-radius: 0.625rem;
     color: #152614;
     background-color: rgb(250 255 242 / 0.64);
     background-image:
@@ -64,7 +64,7 @@ const styles = html`<style>
   }
   .showcase h2 {
     margin: 0;
-    font: 600 1.25rem/1.3 'Stack Sans Headline', 'Inter', sans-serif;
+    font: 600 1.25rem/1.3 'Instrument Sans', 'Inter', sans-serif;
     letter-spacing: -0.01em;
   }
   .showcase-lede {

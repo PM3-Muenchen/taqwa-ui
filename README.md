@@ -12,12 +12,12 @@ pnpm add @pm3/taqwa-ui
 
 ### Fonts
 
-The package ships no font files. Load Inter (body), Stack Sans Headline (titles) and Instrument Serif (display) yourself, for example:
+The package ships no font files. Load Inter (body), Instrument Sans (titles) and Instrument Serif (display) yourself, for example:
 
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Stack+Sans+Headline:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Instrument+Sans:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap" />
 ```
 
 You can also self-host them with Fontsource (`@fontsource-variable/inter`, …) or `next/font`. Override the stacks with `--taqwa-font-body`, `--taqwa-font-heading` and `--taqwa-font-display`.

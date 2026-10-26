@@ -33,18 +33,18 @@ typography:
     fontWeight: 400
     lineHeight: 1.1
   headline-lg:
-    fontFamily: Stack Sans Headline
+    fontFamily: Instrument Sans
     fontSize: 28px
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: -0.01em
   headline-md:
-    fontFamily: Stack Sans Headline
+    fontFamily: Instrument Sans
     fontSize: 20px
     fontWeight: 600
     lineHeight: 1.3
   headline-sm:
-    fontFamily: Stack Sans Headline
+    fontFamily: Instrument Sans
     fontSize: 17px
     fontWeight: 600
     lineHeight: 1.35
@@ -69,8 +69,8 @@ typography:
     fontWeight: 400
     lineHeight: 18px
 rounded:
-  control: 8px
-  surface: 14px
+  control: 6px
+  surface: 10px
   full: 9999px
 spacing:
   xs: 4px
@@ -144,7 +144,7 @@ components:
   checkbox-checked:
     backgroundColor: "{colors.primary}"
     textColor: "{colors.on-primary}"
-    rounded: 6px
+    rounded: 4px
     size: 20px
   switch-thumb:
     backgroundColor: "{colors.neutral}"
@@ -227,10 +227,10 @@ The page is solid Ivory. Glass and field ratios are measured over `#B9E2A6`, the
 There are three typefaces, each with a strict role:
 
 - **Inter:** all UI and body text. 15px / 24px on mobile and 14px / 20px from 768px up. Labels use weight 500.
-- **Stack Sans Headline:** titles inside components (dialog, drawer, popover, toast titles, fieldset legends) and page headings. Weight 600 with slight negative tracking.
+- **Instrument Sans:** titles inside components (dialog, drawer, popover, toast titles, fieldset legends) and page headings. Weight 600 with slight negative tracking.
 - **Instrument Serif:** display only, e.g. hero text and editorial moments. Never used for UI text, and no component uses it. It's available as `--taqwa-font-display`.
 
-The package ships no font files. Load them in the app, for example from Google Fonts: `family=Inter:wght@400..700&family=Stack+Sans+Headline:wght@400..700&family=Instrument+Serif:ital@0;1`. Override them with `--taqwa-font-body`, `--taqwa-font-heading` and `--taqwa-font-display`.
+The package ships no font files. Load them in the app, for example from Google Fonts: `family=Inter:wght@400..700&family=Instrument+Sans:wght@400..700&family=Instrument+Serif:ital@0;1`. Override them with `--taqwa-font-body`, `--taqwa-font-heading` and `--taqwa-font-display`.
 
 ## Layout
 
@@ -265,9 +265,9 @@ All motion uses Motion (`motion`); CSS transitions are not used. Buttons scale t
 
 Corners are soft but precise:
 
-- 8px on controls (buttons, inputs, list items, tabs); checkboxes use 6px so they never read as radios
-- 12px on tab and toggle tracks (control radius + their 4px padding)
-- 14px on floating surfaces (popovers, menus, dialogs, toasts, toolbars)
+- 6px on controls (buttons, inputs, list items, tabs); checkboxes use 4px so they never read as radios
+- 10px on tab and toggle tracks (control radius + their 4px padding)
+- 10px on floating surfaces (popovers, menus, dialogs, toasts, toolbars)
 - fully round only for avatars, radio buttons, switch tracks and thumbs, slider thumbs, and progress bars
 
 Bottom sheets round only their top corners.
@@ -294,5 +294,5 @@ All 37 Base UI components are available as `taqwa-*` custom elements.
 - Don't put anything darker than `#B9E2A6` behind the glass, or the muted text on glass drops below AA.
 - Don't add grain to buttons or small controls; it belongs to the page and to glass panes.
 - Don't use red for anything other than errors and destructive actions.
-- Don't mix rounded-full pills with 8px controls in the same group (except avatars and switches).
+- Don't mix rounded-full pills with 6px controls in the same group (except avatars and switches).
 - Don't animate with CSS transitions. Use the shared Motion helpers so reduced motion is respected.
