@@ -182,7 +182,7 @@ const page = (open = false) => html`
       <p class="showcase-eyebrow">Taqwa UI · Frosted Meadow</p>
       <h1 class="showcase-display">Calm tools for <em>focused</em> work.</h1>
       <p class="showcase-lede">
-        Frosted ivory glass on a solid Ivory page. Deep green for the one action that matters, lime cream for
+        Frosted ivory glass on a solid Ivory page. Deep green for the one action that matters, mint cream for
         everything you select.
       </p>
       <div class="showcase-row showcase-actions">
