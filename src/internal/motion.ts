@@ -8,11 +8,12 @@ export interface MotionOptions {
   transition?: AnimationOptions;
 }
 
+// Liquid glass: hover frosts the control, press swells it with a jelly spring (like iOS 26 controls).
 export const glassMotion: Required<MotionOptions> = {
-  hover: { '--_glass': 1, y: -1 } as DOMKeyframesDefinition,
-  press: { '--_glass': 0.55, y: 0, scale: 0.98 } as DOMKeyframesDefinition,
-  rest: { '--_glass': 0, y: 0, scale: 1 } as DOMKeyframesDefinition,
-  transition: { type: 'spring', visualDuration: 0.22, bounce: 0.15 },
+  hover: { '--_glass': 1, scale: 1.015 } as DOMKeyframesDefinition,
+  press: { '--_glass': 1, scale: 1.04 } as DOMKeyframesDefinition,
+  rest: { '--_glass': 0, scale: 1 } as DOMKeyframesDefinition,
+  transition: { type: 'spring', visualDuration: 0.3, bounce: 0.35 },
 };
 
 /** SSR-safe: false outside the browser. */
@@ -37,7 +38,17 @@ export function bindGlassMotion(
     animate(target, keyframes, !custom && prefersReducedMotion() ? instant : transition);
   };
   let hovered = false;
+  // Specular highlight follows the pointer.
+  const track = (event: PointerEvent) => {
+    const rect = target.getBoundingClientRect();
+    target.style.setProperty('--_glass-x', `${((event.clientX - rect.left) / rect.width) * 100}%`);
+    target.style.setProperty('--_glass-y', `${((event.clientY - rect.top) / rect.height) * 100}%`);
+  };
+  target.addEventListener('pointermove', track);
+  target.addEventListener('pointerdown', track);
   const unbind = [
+    () => target.removeEventListener('pointermove', track),
+    () => target.removeEventListener('pointerdown', track),
     hover(target, () => {
       hovered = true;
       play('hover');
