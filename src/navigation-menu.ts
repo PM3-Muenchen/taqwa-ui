@@ -125,16 +125,16 @@ export class TaqwaNavigationMenuItem extends LitElement {
   }
 
   /** Shows or hides the panel. The navigation menu calls this so one panel is open at a time. */
-  showPanel(open: boolean, direction: number) {
+  showPanel(open: boolean) {
     const panel = this.panel;
     this.open = open;
     this.trigger?.setAttribute('aria-expanded', String(open));
     if (desktop()) {
       if (open) {
         panel.hidden = false;
-        animate(panel, { opacity: [0, 1], x: [direction * 16, 0] }, transition(spring));
+        animate(panel, { opacity: [0, 1] }, transition(spring));
       } else {
-        animate(panel, { opacity: 0, x: -direction * 16 }, transition(quick)).then(() => {
+        animate(panel, { opacity: 0 }, transition(quick)).then(() => {
           if (!this.open) panel.hidden = true;
         });
       }
@@ -225,11 +225,10 @@ export class TaqwaNavigationMenu extends LitElement {
     const target = item ?? prev;
     if (item === prev || !target || !emit(target, 'open-change', { open: !!item, reason })) return;
 
-    const direction = item && prev ? Math.sign(items.indexOf(item) - items.indexOf(prev)) : 0;
-    prev?.showPanel(false, direction);
-    item?.showPanel(true, direction);
+    prev?.showPanel(false);
+    item?.showPanel(true);
     if (reason === 'escape-key') prev?.trigger?.focus();
-    this.#frame(item);
+    this.#frame(item, prev);
 
     this.#unbindDismiss?.();
     this.#unbindDismiss = item
@@ -244,7 +243,7 @@ export class TaqwaNavigationMenu extends LitElement {
     return [...this.querySelectorAll<TaqwaNavigationMenuItem>(':scope > taqwa-navigation-menu-item')];
   }
 
-  #frame(item: TaqwaNavigationMenuItem | null) {
+  #frame(item: TaqwaNavigationMenuItem | null, prev: TaqwaNavigationMenuItem | null) {
     if (!desktop()) return;
     const frame = this.renderRoot.querySelector<HTMLElement>('.taqwa-navigation-menu-viewport')!;
     if (!item) {
@@ -257,11 +256,14 @@ export class TaqwaNavigationMenu extends LitElement {
     const nav = this.renderRoot.querySelector('.taqwa-navigation-menu')!.getBoundingClientRect();
     const box = item.panel.getBoundingClientRect();
     const left = Math.max(0, Math.min(item.getBoundingClientRect().left - nav.left, nav.width - box.width));
-    item.panel.style.left = `${left}px`;
 
     if (frame.style.visibility === 'visible') {
-      animate(frame, { left, width: box.width, height: box.height }, transition(spring));
+      // The frame and both panels travel on the same spring, so the dropdown moves as one piece while the content crossfades.
+      item.panel.style.left = `${frame.offsetLeft}px`;
+      animate(frame, { left, width: box.width, height: box.height, opacity: 1 }, transition(spring));
+      for (const panel of [item.panel, prev?.panel]) if (panel) animate(panel, { left }, transition(spring));
     } else {
+      item.panel.style.left = `${left}px`;
       Object.assign(frame.style, { left: `${left}px`, width: `${box.width}px`, height: `${box.height}px`, visibility: 'visible' });
       animate(frame, { opacity: [0, 1] }, transition(spring));
     }
