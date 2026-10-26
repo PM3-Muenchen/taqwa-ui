@@ -50,6 +50,24 @@ import { ArrowRight } from 'lucide-react';
 
 Use `BaseButton` when raw Base UI behavior without Taqwa variants is required. Lucide remains a direct dependency so applications import only the named icons they use.
 
+## Motion
+
+`Button` includes subtle hover and press animations. Customize or replace them with `motionProps`:
+
+```tsx
+<Button
+  motionProps={{
+    whileHover: { scale: 1.05 },
+    whileTap: { scale: 0.96 },
+    transition: { type: 'spring', stiffness: 400, damping: 17 },
+  }}
+>
+  Continue
+</Button>
+```
+
+The default animations respect the user's reduced-motion preference. Explicit `motionProps` take precedence.
+
 ## Publishing
 
 Create a GitHub Release whose tag matches `v` plus the package version, for example `v0.1.0`. The release workflow validates, builds, and publishes to npm. Set the repository `NPM_TOKEN` secret to an npm automation token authorized to publish `@pm3/taqwa-ui`.

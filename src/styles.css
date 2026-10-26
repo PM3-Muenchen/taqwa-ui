@@ -3,6 +3,19 @@
 @import "tailwindcss/theme.css" layer(theme) prefix(tq) source(none);
 @import "tailwindcss/utilities.css" layer(utilities) prefix(tq) source(none);
 
+@layer theme {
+  :root {
+    /* Reusable color aliases. Add or change values here as the palette evolves. */
+    --taqwa-black: var(--tq-color-slate-950);
+    --taqwa-white: var(--tq-color-white);
+    --taqwa-gray: var(--tq-color-slate-500);
+    --taqwa-red: var(--tq-color-red-500);
+    --taqwa-yellow: var(--tq-color-yellow-500);
+    --taqwa-green: var(--tq-color-green-500);
+    --taqwa-blue: var(--tq-color-blue-500);
+  }
+}
+
 @layer components {
   .taqwa-button {
     @apply tq:inline-flex tq:items-center tq:justify-center tq:gap-2 tq:rounded-md tq:px-4 tq:py-2 tq:disabled:cursor-not-allowed tq:disabled:opacity-50;

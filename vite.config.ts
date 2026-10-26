@@ -16,6 +16,8 @@ export default defineConfig({
         ].includes(id) ||
         id === '@base-ui/react' ||
         id.startsWith('@base-ui/react/') ||
+        id === 'motion' ||
+        id.startsWith('motion/') ||
         id === 'react' ||
         id.startsWith('react/') ||
         id === 'react-dom' ||
