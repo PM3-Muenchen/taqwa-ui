@@ -16,6 +16,7 @@
   --color-secondary-foreground: var(--taqwa-color-secondary-foreground, #152614);
   --color-destructive: var(--taqwa-color-destructive, #b42318);
   --color-destructive-foreground: var(--taqwa-color-destructive-foreground, #fafff2);
+  --color-warning: var(--taqwa-color-warning, #9a6200);
   --color-muted: var(--taqwa-color-muted, color-mix(in oklab, var(--tq-color-foreground) 5%, var(--tq-color-background)));
   --color-muted-foreground: var(--taqwa-color-muted-foreground, color-mix(in oklab, var(--tq-color-foreground) 68%, var(--tq-color-background)));
   --color-accent: var(--taqwa-color-accent, color-mix(in oklab, var(--tq-color-secondary) 45%, var(--tq-color-background)));
@@ -68,8 +69,10 @@
   background-color: var(--tq-color-surface);
   background-image: var(--tq-glass-grain);
   background-size: 160px 160px;
-  backdrop-filter: blur(var(--tq-blur-glass)) saturate(1.8) brightness(1.04);
-  -webkit-backdrop-filter: blur(var(--tq-blur-glass)) saturate(1.8) brightness(1.04);
+  /* Through a variable so Tailwind's optimizer keeps the unprefixed property. */
+  --_backdrop: blur(var(--tq-blur-glass)) saturate(1.8) brightness(1.04);
+  -webkit-backdrop-filter: var(--_backdrop);
+  backdrop-filter: var(--_backdrop);
   box-shadow: var(--tq-shadow-surface);
   color: var(--tq-color-foreground);
 
@@ -94,8 +97,10 @@
   position: relative;
   isolation: isolate;
   background-color: color-mix(in oklab, var(--_glass-fill, transparent) calc(100% - var(--_glass, 0) * 28%), transparent);
-  backdrop-filter: blur(calc(var(--_glass, 0) * 14px)) saturate(calc(1 + var(--_glass, 0) * 0.8));
-  -webkit-backdrop-filter: blur(calc(var(--_glass, 0) * 14px)) saturate(calc(1 + var(--_glass, 0) * 0.8));
+  /* Through a variable so Tailwind's optimizer keeps the unprefixed property. */
+  --_backdrop: blur(calc(var(--_glass, 0) * 14px)) saturate(calc(1 + var(--_glass, 0) * 0.8));
+  -webkit-backdrop-filter: var(--_backdrop);
+  backdrop-filter: var(--_backdrop);
 
   &::before {
     content: "";
@@ -161,5 +166,23 @@
   ::before,
   ::after {
     box-sizing: border-box;
+  }
+
+  /* Tailwind registers these defaults with @property, which browsers ignore inside shadow roots. */
+  *,
+  ::before,
+  ::after,
+  ::backdrop {
+    --tw-border-style: solid;
+    --tw-outline-style: solid;
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-alpha: 100%;
+    --tw-inset-shadow: 0 0 #0000;
+    --tw-inset-shadow-alpha: 100%;
+    --tw-ring-shadow: 0 0 #0000;
+    --tw-inset-ring-shadow: 0 0 #0000;
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-offset-width: 0px;
+    --tw-ring-offset-color: #fff;
   }
 }

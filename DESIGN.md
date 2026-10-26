@@ -18,6 +18,7 @@ colors:
   ring: "#2A7221"
   error: "#B42318"
   on-error: "#FAFFF2"
+  warning: "#9A6200"
 typography:
   display-lg:
     fontFamily: Instrument Serif
@@ -125,6 +126,9 @@ components:
   separator:
     backgroundColor: "{colors.border}"
     size: 1px
+  toast-warning-icon:
+    backgroundColor: "{colors.neutral}"
+    textColor: "{colors.warning}"
   input-field-invalid:
     textColor: "{colors.error}"
   glass-surface:
@@ -163,13 +167,14 @@ Components are Lit web components (Shadow DOM) that work in plain HTML, React (1
 
 ## Colors
 
-The palette has four brand colours and one functional red.
+The palette has four brand colours and two functional colours (red and amber).
 
 - **Evergreen (#152614):** the ink. Used for all text, icons and strong outlines. 15.6:1 on Ivory.
 - **Ivory (#FAFFF2):** the page and every surface. A warm, faintly green white. It also works as text on Green and Red.
 - **Green (#2A7221):** the only action colour. Used for primary buttons, checked and active states, slider ranges, and the focus ring. Ivory on Green is 5.9:1 (AA).
 - **Lime cream (#CFEE9E):** selection and secondary emphasis. Used for secondary buttons, pressed toggles, progress and slider tracks, and the highlight tint on glass. Always paired with Evergreen text (12.4:1).
 - **Signal red (#B42318):** errors and destructive actions only. 6.5:1 on Ivory.
+- **Amber (#9A6200):** warning icons in toasts only. 5.0:1 on Ivory.
 
 Neutral steps are mixed from Evergreen into Ivory (`color-mix(in oklab, …)`), so a re-theme stays coherent:
 

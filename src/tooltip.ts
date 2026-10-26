@@ -44,9 +44,15 @@ export class TaqwaTooltip extends TaqwaPopupBase {
   }
 
   protected syncAria() {
-    const trigger = this.triggerEl;
-    const popup = this.popupEl;
-    if (trigger && popup) trigger.ariaDescribedByElements = this.open ? [popup] : null;
+    // The popup lives in this shadow root, which the light-DOM trigger cannot reference, so describe it by text.
+    const text = [...this.childNodes]
+      .filter((node) => !(node instanceof Element && node.slot === 'trigger'))
+      .map((node) => node.textContent)
+      .join(' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (text) this.triggerEl?.setAttribute('aria-description', text);
+    else this.triggerEl?.removeAttribute('aria-description');
   }
 }
 

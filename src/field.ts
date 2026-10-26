@@ -63,9 +63,9 @@ export class TaqwaField extends LitElement {
     return this.name || this.control?.name || '';
   }
 
-  /** All current messages: own validation plus messages set by `setExternalErrors()`. */
+  /** Current messages. Schema/server messages from `setExternalErrors()` take precedence over the field's own (native, `validate`, `schema`), so the browser's generic text never duplicates a schema message. */
   get errors(): string[] {
-    return [...new Set([...this.ownErrors, ...this.externalErrors])];
+    return [...new Set(this.externalErrors.length ? this.externalErrors : this.ownErrors)];
   }
 
   get isInvalid() {

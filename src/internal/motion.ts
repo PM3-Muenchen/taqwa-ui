@@ -16,6 +16,14 @@ export const glassMotion: Required<MotionOptions> = {
   transition: { type: 'spring', visualDuration: 0.3, bounce: 0.35 },
 };
 
+/** Text fields frost on hover/press but never scale (a swelling text box feels wrong). */
+export const fieldGlassMotion: Required<MotionOptions> = {
+  ...glassMotion,
+  hover: { '--_glass': 1 } as DOMKeyframesDefinition,
+  press: { '--_glass': 1 } as DOMKeyframesDefinition,
+  rest: { '--_glass': 0 } as DOMKeyframesDefinition,
+};
+
 /** SSR-safe: false outside the browser. */
 export const prefersReducedMotion = () =>
   typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -28,9 +36,13 @@ const instant: AnimationOptions = { duration: 0 };
  */
 export function bindGlassMotion(
   target: HTMLElement,
-  { disabled = () => false, options = () => undefined }: { disabled?: () => boolean; options?: () => MotionOptions | undefined } = {},
+  {
+    disabled = () => false,
+    options = () => undefined,
+    preset = glassMotion,
+  }: { disabled?: () => boolean; options?: () => MotionOptions | undefined; preset?: Required<MotionOptions> } = {},
 ): VoidFunction {
-  const resolve = () => ({ ...glassMotion, ...options() });
+  const resolve = () => ({ ...preset, ...options() });
   const play = (state: 'hover' | 'press' | 'rest', force = false) => {
     const custom = options();
     const { [state]: keyframes, transition } = resolve();

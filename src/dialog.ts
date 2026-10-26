@@ -148,7 +148,10 @@ export class TaqwaDialog extends LitElement {
     trigger?.setAttribute('aria-expanded', String(this.open));
     const title = this.querySelector<HTMLElement>(':scope > [slot="title"]');
     const dialog = this.#dialog;
-    if (dialog) dialog.ariaLabelledByElements = title ? [title] : null;
+    if (!dialog) return;
+    dialog.ariaLabelledByElements = title ? [title] : null;
+    // Text fallback for browsers without ARIA element reflection (Chrome < 135, Firefox < 136).
+    dialog.ariaLabel = title?.textContent?.trim() || null;
   }
 
   render() {

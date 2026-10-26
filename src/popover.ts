@@ -277,6 +277,10 @@ export class TaqwaPopover extends TaqwaPopupBase {
     const description = this.slotted('description');
     popup.ariaLabelledByElements = title ? [title] : null;
     popup.ariaDescribedByElements = description ? [description] : null;
+    // Text fallback for browsers without ARIA element reflection (Chrome < 135, Firefox < 136).
+    popup.ariaLabel = title?.textContent?.trim() || null;
+    if (description?.textContent?.trim()) popup.setAttribute('aria-description', description.textContent.trim());
+    else popup.removeAttribute('aria-description');
   }
 
   protected renderContent() {
