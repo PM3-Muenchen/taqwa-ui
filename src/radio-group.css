@@ -40,7 +40,7 @@
     font: inherit;
     cursor: inherit;
 
-    @apply tq:focus-ring tq:inline-flex tq:size-5 tq:shrink-0 tq:items-center tq:justify-center tq:rounded-full tq:border tq:border-input tq:bg-background;
+    @apply tq:focus-ring tq:inline-flex tq:size-5 tq:shrink-0 tq:items-center tq:justify-center tq:rounded-full tq:border tq:border-input tq:bg-field;
   }
 
   .taqwa-radio[aria-checked="true"] {

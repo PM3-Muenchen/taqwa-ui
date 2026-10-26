@@ -9,7 +9,7 @@
   .taqwa-select-trigger {
     @apply tq:glass-interactive tq:control-size tq:focus-ring tq:flex tq:w-full tq:min-w-44 tq:cursor-pointer tq:items-center tq:justify-between tq:gap-3 tq:rounded-control tq:border tq:border-input tq:text-left tq:text-foreground tq:select-none tq:disabled:cursor-not-allowed tq:disabled:opacity-50;
 
-    --_glass-fill: var(--tq-color-background);
+    --_glass-fill: var(--tq-color-field);
     font-family: inherit;
     color: var(--tq-color-foreground);
   }

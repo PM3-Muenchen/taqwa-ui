@@ -57,6 +57,7 @@ export class TaqwaButton extends LitElement {
     this.#unbindMotion = bindGlassMotion(this.renderRoot.querySelector('button')!, {
       disabled: () => this.disabled,
       options: () => this.motionOptions,
+      pressScale: 0.98,
     });
   }
 }

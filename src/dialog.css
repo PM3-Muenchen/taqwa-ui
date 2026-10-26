@@ -34,9 +34,9 @@
   .taqwa-dialog__backdrop {
     @apply tq:fixed tq:inset-0;
 
-    background-color: color-mix(in oklab, var(--tq-color-foreground) 32%, transparent);
+    background-color: color-mix(in oklab, var(--tq-color-foreground) 12%, transparent);
     /* Through a variable so Tailwind's optimizer keeps the unprefixed property. */
-    --_backdrop: blur(10px) saturate(1.2);
+    --_backdrop: blur(8px) saturate(1.5);
     -webkit-backdrop-filter: var(--_backdrop);
     backdrop-filter: var(--_backdrop);
   }

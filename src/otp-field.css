@@ -19,7 +19,7 @@
     width: 2.75rem;
     height: 2.75rem;
 
-    @apply tq:focus-ring tq:rounded-control tq:border tq:border-input tq:bg-background tq:text-center tq:text-body tq:text-foreground tq:tabular-nums tq:md:size-10 tq:md:text-sm;
+    @apply tq:focus-ring tq:rounded-control tq:border tq:border-input tq:bg-field tq:text-center tq:text-body tq:text-foreground tq:tabular-nums tq:md:size-10 tq:md:text-sm;
   }
 
   @media (width >= 48rem) {

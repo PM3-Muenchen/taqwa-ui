@@ -11,26 +11,41 @@
     margin: 0;
     border: none;
     outline: none;
+    /* The top layer still inherits from the light DOM; don't pick up the page's alignment. */
+    text-align: start;
+    /* The UA's `overflow: auto` on [popover] would clip the arrow. */
+    overflow: visible;
+  }
+
+  /* Layout classes (e.g. `tq:flex`) would otherwise override the UA's hidden-popover `display: none`. */
+  .taqwa-popup:not(:popover-open) {
+    display: none;
   }
 
   .taqwa-popup__arrow {
-    @apply tq:absolute tq:size-2.5 tq:rotate-45 tq:bg-background;
+    @apply tq:absolute tq:size-2.5 tq:rotate-45;
+    /* Only the half outside the popup is drawn, so it never doubles the glass tint. */
+    background-color: var(--tq-color-surface);
   }
 
   .taqwa-popup__arrow[data-side="top"] {
     bottom: -0.3125rem;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
   }
 
   .taqwa-popup__arrow[data-side="bottom"] {
     top: -0.3125rem;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
   }
 
   .taqwa-popup__arrow[data-side="left"] {
     right: -0.3125rem;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
   }
 
   .taqwa-popup__arrow[data-side="right"] {
     left: -0.3125rem;
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
   }
 
   .taqwa-popover {

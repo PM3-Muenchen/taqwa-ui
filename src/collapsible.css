@@ -15,7 +15,7 @@
     margin: 0;
     font-family: inherit;
     color: var(--tq-color-foreground);
-    --_glass-fill: var(--tq-color-background);
+    --_glass-fill: var(--tq-color-field);
   }
 
   .taqwa-collapsible-indicator {

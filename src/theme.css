@@ -10,21 +10,23 @@
 @theme {
   --color-foreground: var(--taqwa-color-foreground, #152614);
   --color-background: var(--taqwa-color-background, #fafff2);
-  --color-primary: var(--taqwa-color-primary, #2a7221);
+  --color-primary: var(--taqwa-color-primary, #21602a);
   --color-primary-foreground: var(--taqwa-color-primary-foreground, #fafff2);
-  --color-secondary: var(--taqwa-color-secondary, #cfee9e);
+  --color-secondary: var(--taqwa-color-secondary, #d9f2a6);
   --color-secondary-foreground: var(--taqwa-color-secondary-foreground, #152614);
   --color-destructive: var(--taqwa-color-destructive, #b42318);
   --color-destructive-foreground: var(--taqwa-color-destructive-foreground, #fafff2);
-  --color-warning: var(--taqwa-color-warning, #9a6200);
+  --color-warning: var(--taqwa-color-warning, #875600);
   --color-muted: var(--taqwa-color-muted, color-mix(in oklab, var(--tq-color-foreground) 5%, var(--tq-color-background)));
-  --color-muted-foreground: var(--taqwa-color-muted-foreground, color-mix(in oklab, var(--tq-color-foreground) 68%, var(--tq-color-background)));
+  --color-muted-foreground: var(--taqwa-color-muted-foreground, color-mix(in oklab, var(--tq-color-foreground) 72%, var(--tq-color-background)));
   --color-accent: var(--taqwa-color-accent, color-mix(in oklab, var(--tq-color-secondary) 45%, var(--tq-color-background)));
   /* Lines use a lighter Evergreen (Evergreen + Green, 50/50) so they read green rather than grey. */
   --color-border: var(--taqwa-color-border, color-mix(in oklab, color-mix(in oklab, var(--tq-color-primary), var(--tq-color-foreground)) 20%, var(--tq-color-background)));
-  --color-input: var(--taqwa-color-input, color-mix(in oklab, color-mix(in oklab, var(--tq-color-primary), var(--tq-color-foreground)) 58%, var(--tq-color-background)));
+  --color-input: var(--taqwa-color-input, color-mix(in oklab, color-mix(in oklab, var(--tq-color-primary), var(--tq-color-foreground)) 66%, var(--tq-color-background)));
   --color-ring: var(--taqwa-color-ring, var(--tq-color-primary));
-  --color-surface: var(--taqwa-color-surface, color-mix(in oklab, var(--tq-color-background) 86%, transparent));
+  /* Glass fill (floating surfaces) and field fill (inputs, checkboxes, …); both let the page tint through. */
+  --color-surface: var(--taqwa-color-surface, color-mix(in oklab, var(--tq-color-background) 64%, transparent));
+  --color-field: var(--taqwa-color-field, color-mix(in oklab, white 70%, transparent));
 
   --font-body: var(--taqwa-font-body, "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
   --font-heading: var(--taqwa-font-heading, "Stack Sans Headline", "Inter", ui-sans-serif, system-ui, sans-serif);
@@ -34,23 +36,43 @@
   --text-body: 0.9375rem;
   --text-body--line-height: 1.5rem;
 
-  --radius-control: var(--taqwa-radius-control, 0.25rem);
-  --radius-surface: var(--taqwa-radius-surface, 0.375rem);
+  --radius-control: var(--taqwa-radius-control, 0.5rem);
+  --radius-surface: var(--taqwa-radius-surface, 0.875rem);
 
-  --blur-glass: var(--taqwa-glass-blur, 12px);
+  --blur-glass: var(--taqwa-glass-blur, 22px);
+  --glass-saturate: var(--taqwa-glass-saturate, 160%);
+  /* A soft white sheen that fades out over the top of the pane. */
+  --glass-sheen: var(--taqwa-glass-sheen, linear-gradient(to bottom, rgb(255 255 255 / 0.34), rgb(255 255 255 / 0) 4rem));
+  /* Film grain: tiled SVG fractal noise at ~5% opacity. `none` turns it off. */
+  --grain: var(
+    --taqwa-grain,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.07'/%3E%3C/svg%3E")
+  );
+  /* Floating panes: white top highlight, faint inner rim, hairline edge, wide green-tinted drop. */
   --shadow-surface: var(
     --taqwa-shadow-surface,
-    0 0 0 1px var(--tq-color-border),
-    0 12px 32px -8px color-mix(in oklab, var(--tq-color-foreground) 24%, transparent),
-    0 2px 6px -2px color-mix(in oklab, var(--tq-color-foreground) 12%, transparent)
+    inset 0 1px 0 0 rgb(255 255 255 / 0.8),
+    inset 0 0 0 1px rgb(255 255 255 / 0.32),
+    0 0 0 1px color-mix(in oklab, var(--tq-color-foreground) 11%, transparent),
+    0 24px 56px -16px color-mix(in oklab, var(--tq-color-primary) 30%, transparent),
+    0 6px 16px -6px color-mix(in oklab, var(--tq-color-foreground) 12%, transparent)
+  );
+  /* Small raised parts (tab indicator, switch and slider thumbs). */
+  --shadow-raised: var(
+    --taqwa-shadow-raised,
+    inset 0 1px 0 0 rgb(255 255 255 / 0.9),
+    0 0 0 1px color-mix(in oklab, var(--tq-color-foreground) 9%, transparent),
+    0 1px 2px 0 color-mix(in oklab, var(--tq-color-foreground) 12%, transparent),
+    0 4px 10px -3px color-mix(in oklab, var(--tq-color-primary) 26%, transparent)
   );
 }
 
-/* Floating surfaces (popover, menu, dialog, toast, …): translucent ivory, light blur, hairline edge, soft shadow. */
+/* Floating surfaces (popover, menu, dialog, toast, …): frosted ivory over a saturated blur, grain, sheen and a soft green shadow. */
 @utility glass-surface {
   background-color: var(--tq-color-surface);
+  background-image: var(--tq-grain), var(--tq-glass-sheen);
   /* Through a variable so Tailwind's optimizer keeps the unprefixed property. */
-  --_backdrop: blur(var(--tq-blur-glass));
+  --_backdrop: blur(var(--tq-blur-glass)) saturate(var(--tq-glass-saturate));
   -webkit-backdrop-filter: var(--_backdrop);
   backdrop-filter: var(--_backdrop);
   box-shadow: var(--tq-shadow-surface);

@@ -40,7 +40,8 @@
   }
 
   .taqwa-switch__thumb {
-    @apply tq:block tq:size-5 tq:shrink-0 tq:rounded-full tq:bg-background tq:shadow-sm;
+    @apply tq:block tq:size-5 tq:shrink-0 tq:rounded-full tq:bg-background;
+    box-shadow: var(--tq-shadow-raised);
   }
 
   .taqwa-switch__label {

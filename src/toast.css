@@ -54,15 +54,19 @@
 
     /* `--_fade` (set on the host by the enter/exit animation) fades fill, blur, shadow and content; clamped for spring overshoot. */
     --_f: clamp(0, var(--_fade, 1), 1);
-    --_backdrop: blur(calc(var(--_f) * var(--tq-blur-glass)));
+    --_backdrop: blur(calc(var(--_f) * var(--tq-blur-glass))) saturate(calc(100% + var(--_f) * (var(--tq-glass-saturate) - 100%)));
     background-color: color-mix(in oklab, var(--tq-color-surface) calc(var(--_f) * 100%), transparent);
+    background-image: none;
     box-shadow: none;
 
     &::before {
       content: "";
       position: absolute;
       inset: 0;
+      /* Behind the content: the backdrop filter makes the toast a stacking context. */
+      z-index: -1;
       border-radius: inherit;
+      background-image: var(--tq-grain), var(--tq-glass-sheen);
       box-shadow: var(--tq-shadow-surface);
       opacity: var(--_f);
       pointer-events: none;

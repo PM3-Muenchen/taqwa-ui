@@ -8,7 +8,7 @@
   }
 
   .taqwa-combobox-field {
-    @apply tq:flex tq:min-h-11 tq:w-full tq:cursor-text tq:items-center tq:gap-1 tq:rounded-control tq:border tq:border-input tq:bg-background tq:py-1 tq:pr-1 tq:pl-2.5 tq:md:min-h-10;
+    @apply tq:flex tq:min-h-11 tq:w-full tq:cursor-text tq:items-center tq:gap-1 tq:rounded-control tq:border tq:border-input tq:bg-field tq:py-1 tq:pr-1 tq:pl-2.5 tq:md:min-h-10;
   }
 
   .taqwa-combobox-field:focus-within {

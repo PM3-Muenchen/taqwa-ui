@@ -32,7 +32,8 @@
     font: inherit;
     cursor: inherit;
 
-    @apply tq:focus-ring tq:inline-flex tq:size-5 tq:shrink-0 tq:items-center tq:justify-center tq:rounded-control tq:border tq:border-input tq:bg-background tq:text-primary-foreground;
+    @apply tq:focus-ring tq:inline-flex tq:size-5 tq:shrink-0 tq:items-center tq:justify-center tq:border tq:border-input tq:bg-field tq:text-primary-foreground;
+    border-radius: calc(var(--tq-radius-control) - 2px);
   }
 
   .taqwa-checkbox[aria-checked="true"],

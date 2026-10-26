@@ -28,7 +28,7 @@
     min-width: 0;
     flex: 1;
 
-    @apply tq:focus-ring tq:rounded-control tq:border tq:border-input tq:bg-background tq:px-3 tq:text-left tq:text-body tq:text-foreground tq:tabular-nums tq:md:text-sm;
+    @apply tq:focus-ring tq:rounded-control tq:border tq:border-input tq:bg-field tq:px-3 tq:text-left tq:text-body tq:text-foreground tq:tabular-nums tq:md:text-sm;
   }
 
   .taqwa-number-field__input[aria-invalid="true"] {
@@ -46,7 +46,7 @@
     flex-shrink: 0;
     width: 2.75rem;
 
-    --_glass-fill: var(--tq-color-background);
+    --_glass-fill: var(--tq-color-field);
 
     @apply tq:focus-ring tq:glass-interactive tq:inline-flex tq:cursor-pointer tq:items-center tq:justify-center tq:rounded-control tq:border tq:border-input tq:text-foreground tq:md:w-10;
   }

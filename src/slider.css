@@ -64,7 +64,8 @@
   .taqwa-slider__pill {
     --_glass-fill: var(--tq-color-background);
 
-    @apply tq:glass-interactive tq:size-6 tq:rounded-full tq:border tq:border-input tq:bg-background tq:shadow-sm;
+    @apply tq:glass-interactive tq:size-6 tq:rounded-full tq:border tq:border-input tq:bg-background;
+    box-shadow: var(--tq-shadow-raised);
   }
 
   .taqwa-slider__thumb[aria-disabled="true"] {

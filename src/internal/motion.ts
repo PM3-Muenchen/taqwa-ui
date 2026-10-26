@@ -24,18 +24,25 @@ const instant: AnimationOptions = { duration: 0 };
 
 /**
  * Glass hover/press feedback. Hover is mouse/pen only (Motion's `hover` ignores touch), so touch gets press only.
+ * `pressScale` (e.g. 0.98 for buttons) shrinks the target while pressed; skipped with reduced motion.
  * Explicit `options()` override the defaults and, like the button's `motionOptions`, ignore reduced motion.
  */
 export function bindGlassMotion(
   target: HTMLElement,
-  { disabled = () => false, options = () => undefined }: { disabled?: () => boolean; options?: () => MotionOptions | undefined } = {},
+  {
+    disabled = () => false,
+    options = () => undefined,
+    pressScale,
+  }: { disabled?: () => boolean; options?: () => MotionOptions | undefined; pressScale?: number } = {},
 ): VoidFunction {
   const resolve = () => ({ ...glassMotion, ...options() });
   const play = (state: 'hover' | 'press' | 'rest', force = false) => {
     const custom = options();
     const { [state]: keyframes, transition } = resolve();
     if (!force && disabled()) return;
-    animate(target, keyframes, !custom && prefersReducedMotion() ? instant : transition);
+    const reduced = !custom && prefersReducedMotion();
+    const scale = pressScale && !custom && !reduced ? { scale: state === 'press' ? pressScale : 1 } : undefined;
+    animate(target, { ...keyframes, ...scale } as DOMKeyframesDefinition, reduced ? instant : transition);
   };
   let hovered = false;
   const unbind = [

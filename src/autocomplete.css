@@ -8,7 +8,7 @@
   }
 
   .taqwa-autocomplete-input {
-    @apply tq:control-size tq:focus-ring tq:w-full tq:rounded-control tq:border tq:border-input tq:bg-background tq:text-body tq:text-foreground tq:placeholder:text-muted-foreground tq:md:text-sm tq:disabled:cursor-not-allowed tq:disabled:opacity-50;
+    @apply tq:control-size tq:focus-ring tq:w-full tq:rounded-control tq:border tq:border-input tq:bg-field tq:text-body tq:text-foreground tq:placeholder:text-muted-foreground tq:md:text-sm tq:disabled:cursor-not-allowed tq:disabled:opacity-50;
 
     font-family: inherit;
   }

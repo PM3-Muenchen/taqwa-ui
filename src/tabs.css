@@ -37,7 +37,11 @@
   }
 
   .taqwa-tabs-list {
-    @apply tq:relative tq:flex tq:gap-1 tq:rounded-surface tq:bg-muted tq:p-1;
+    @apply tq:relative tq:flex tq:gap-1 tq:p-1;
+    /* Translucent track so the page tints through; radius = tab radius + padding. */
+    border-radius: calc(var(--tq-radius-control) + 0.25rem);
+    background-color: color-mix(in oklab, var(--tq-color-muted) 60%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--tq-color-foreground) 7%, transparent);
   }
 
   .taqwa-tabs-list--vertical {
@@ -45,7 +49,8 @@
   }
 
   .taqwa-tabs-indicator {
-    @apply tq:glass-surface tq:absolute tq:left-0 tq:top-0 tq:rounded-control;
+    @apply tq:absolute tq:left-0 tq:top-0 tq:rounded-control tq:bg-background;
+    box-shadow: var(--tq-shadow-raised);
   }
 
   .taqwa-tab {
