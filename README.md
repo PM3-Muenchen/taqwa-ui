@@ -1,6 +1,6 @@
 # Taqwa UI
 
-An React component library built on [Base UI](https://base-ui.com/).
+A web component library built with [Lit](https://lit.dev/). Works in any framework or plain HTML.
 
 ## Development
 
@@ -19,55 +19,61 @@ pnpm build-storybook
 
 ## Usage
 
-```tsx
-import { Button } from '@pm3/taqwa-ui';
-
-export function Example() {
-  return <Button variant="secondary">Continue</Button>;
-}
-```
-
-Import the stylesheet when Taqwa component styles are introduced:
+Importing the package registers every element:
 
 ```ts
-import '@pm3/taqwa-ui/styles.css';
+import '@pm3/taqwa-ui';
 ```
 
-Taqwa ships Button styles but no CSS reset. Component classes use the `.taqwa-*` namespace and Tailwind utilities are compiled with the `tq:` prefix, preventing collisions with a consuming project's Tailwind classes and variables.
+```html
+<taqwa-button variant="secondary">Continue</taqwa-button>
+```
+
+Styles ship inside each component's Shadow DOM, so there is no stylesheet to import and no CSS reset. Internal styles use `.taqwa-*` classes and `tq:`-prefixed Tailwind utilities.
+
+## Button
+
+| Attribute  | Values                               | Default   |
+| ---------- | ------------------------------------ | --------- |
+| `variant`  | `primary`, `secondary`, `tertiary`   | `primary` |
+| `type`     | `button`, `submit`, `reset`          | `button`  |
+| `disabled` | boolean                              | `false`   |
+
+`<taqwa-button type="submit">` submits (and `type="reset"` resets) its enclosing `<form>`.
 
 ## Extending components
 
-`Button` provides `primary`, `secondary`, and `tertiary` variants. Pass `className` to add or override styles; Taqwa components merge class names through `cn`.
+Style the inner element through its `base` part:
 
-```tsx
-import { Button, cn } from '@pm3/taqwa-ui';
-import { ArrowRight } from 'lucide-react';
-
-<Button className={cn('w-full')}>
-  Continue <ArrowRight aria-hidden="true" size={16} />
-</Button>;
+```css
+taqwa-button::part(base) {
+  width: 100%;
+}
 ```
 
-Use `BaseButton` when raw Base UI behavior without Taqwa variants is required. Lucide remains a direct dependency so applications import only the named icons they use.
+Slot any content, such as icons:
+
+```html
+<taqwa-button>
+  Continue <svg aria-hidden="true">…</svg>
+</taqwa-button>
+```
 
 ## Motion
 
-`Button` includes subtle hover and press animations. Customize or replace them with `motionProps`:
+`taqwa-button` includes subtle hover and press animations powered by [Motion](https://motion.dev/). Customize them with the `motionOptions` property:
 
-```tsx
-<Button
-  motionProps={{
-    whileHover: { scale: 1.05 },
-    whileTap: { scale: 0.96 },
-    transition: { type: 'spring', stiffness: 400, damping: 17 },
-  }}
->
-  Continue
-</Button>
+```ts
+document.querySelector('taqwa-button')!.motionOptions = {
+  hover: { scale: 1.05 },
+  press: { scale: 0.96 },
+  rest: { scale: 1 }, // state restored when hover/press ends
+  transition: { type: 'spring', stiffness: 400, damping: 17 },
+};
 ```
 
-The default animations respect the user's reduced-motion preference. Explicit `motionProps` take precedence.
+The default animations respect the user's reduced-motion preference. Explicit `motionOptions` take precedence.
 
 ## Publishing
 
-Create a GitHub Release whose tag matches `v` plus the package version, for example `v0.1.0`. The release workflow validates, builds, and publishes to npm. Set the repository `NPM_TOKEN` secret to an npm automation token authorized to publish `@pm3/taqwa-ui`.
+Create a GitHub Release whose tag matches `v` plus the package version, for example `v0.2.0`. The release workflow validates, builds, and publishes to npm. Set the repository `NPM_TOKEN` secret to an npm automation token authorized to publish `@pm3/taqwa-ui`.

@@ -1,5 +1,4 @@
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
-import '../src/styles.css';
 
 export default {
   decorators: [

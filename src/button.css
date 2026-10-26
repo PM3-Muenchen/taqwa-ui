@@ -1,0 +1,34 @@
+@import "./theme.css";
+
+@layer components {
+  :host {
+    display: inline-block;
+  }
+
+  .taqwa-button {
+    @apply tq:inline-flex tq:w-full tq:items-center tq:justify-center tq:gap-2 tq:rounded-md tq:px-4 tq:py-2 tq:disabled:cursor-not-allowed tq:disabled:opacity-50;
+
+    border: none;
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+  }
+
+  .taqwa-button:focus-visible {
+    outline: 2px solid var(--tq-color-slate-900);
+    outline-offset: 2px;
+  }
+
+  .taqwa-button--primary {
+    @apply tq:bg-slate-900 tq:text-white tq:enabled:hover:bg-slate-800;
+  }
+
+  .taqwa-button--secondary {
+    @apply tq:bg-slate-100 tq:text-slate-900 tq:enabled:hover:bg-slate-200;
+  }
+
+  .taqwa-button--tertiary {
+    @apply tq:bg-transparent tq:text-slate-900 tq:enabled:hover:bg-slate-100;
+  }
+}

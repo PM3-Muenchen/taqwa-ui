@@ -1,6 +1,8 @@
+import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  plugins: [tailwindcss()],
   build: {
     lib: {
       entry: 'src/index.ts',
@@ -9,19 +11,11 @@ export default defineConfig({
     },
     rollupOptions: {
       external: (id) =>
-        [
-          'class-variance-authority',
-          'clsx',
-          'tailwind-merge',
-        ].includes(id) ||
-        id === '@base-ui/react' ||
-        id.startsWith('@base-ui/react/') ||
+        id === 'lit' ||
+        id.startsWith('lit/') ||
+        id.startsWith('@lit/') ||
         id === 'motion' ||
-        id.startsWith('motion/') ||
-        id === 'react' ||
-        id.startsWith('react/') ||
-        id === 'react-dom' ||
-        id.startsWith('react-dom/'),
+        id.startsWith('motion/'),
     },
   },
 });

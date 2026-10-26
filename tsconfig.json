@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
+    "experimentalDecorators": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
     "noEmit": true,
     "strict": true,
     "skipLibCheck": true,
-    "target": "ES2022"
+    "target": "ES2022",
+    "types": ["vite/client"],
+    "useDefineForClassFields": false
   },
   "include": ["src", ".storybook", "vite.config.ts"]
 }

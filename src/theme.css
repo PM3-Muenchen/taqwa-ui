@@ -1,0 +1,17 @@
+@layer theme, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme) prefix(tq) source(none);
+@import "tailwindcss/utilities.css" layer(utilities) prefix(tq) source(none);
+
+@layer theme {
+  :host {
+    /* Reusable color aliases. Add or change values here as the palette evolves. */
+    --taqwa-black: var(--tq-color-slate-950);
+    --taqwa-white: var(--tq-color-white);
+    --taqwa-gray: var(--tq-color-slate-500);
+    --taqwa-red: var(--tq-color-red-500);
+    --taqwa-yellow: var(--tq-color-yellow-500);
+    --taqwa-green: var(--tq-color-green-500);
+    --taqwa-blue: var(--tq-color-blue-500);
+  }
+}
