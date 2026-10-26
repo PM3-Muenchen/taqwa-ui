@@ -440,9 +440,9 @@ export class TaqwaToast extends LitElement {
     this.#exiting = true;
     const dir = this.#exitSwipe;
     const { y = 0, scale = 1 } = this.#layout ?? {};
-    // Absolute targets: Motion's DOM animate ignores relative `'+=n'` strings. A plain close slides up and fades out.
+    // Absolute targets: Motion's DOM animate ignores relative `'+=n'` strings. A plain close slides left (into the page) and fades out.
     const move =
-      dir === 'left' ? { x: -400 } : dir === 'right' ? { x: 400 } : { y: y + (dir === 'down' ? 300 : dir === 'up' ? -300 : -32) };
+      dir === 'right' ? { x: 400 } : dir === 'up' || dir === 'down' ? { y: y + (dir === 'down' ? 300 : -300) } : { x: dir === 'left' ? -400 : -48 };
     animate(
       this,
       { ...move, '--_fade': 0, scale: scale * 0.96 } as DOMKeyframesDefinition,
