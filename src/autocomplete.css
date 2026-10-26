@@ -21,4 +21,9 @@
   .taqwa-option-indicator {
     display: none;
   }
+
+  /* Indent suggestions under their group heading. */
+  [role="group"] > .taqwa-option {
+    @apply tq:ps-5;
+  }
 }
