@@ -4,12 +4,7 @@ import './drawer';
 import './button';
 import type { TaqwaDrawer } from './drawer';
 
-const stage = `min-height: 100vh; display: grid; place-items: center; padding: 2rem; box-sizing: border-box;
-  background:
-    radial-gradient(circle at 20% 25%, #fbcfe8 0, transparent 40%),
-    radial-gradient(circle at 80% 15%, #bae6fd 0, transparent 42%),
-    radial-gradient(circle at 75% 85%, #bbf7d0 0, transparent 46%),
-    linear-gradient(120deg, #7c3aed 0%, #db2777 50%, #f97316 100%);`;
+const stage = `min-height: 100vh; display: grid; place-items: center; padding: 2rem; box-sizing: border-box;`;
 
 type Args = Pick<TaqwaDrawer, 'side' | 'snapPoints' | 'snapPoint'> & {
   title: string;

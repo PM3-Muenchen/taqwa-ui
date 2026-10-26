@@ -14,7 +14,7 @@ const meta = {
     disabled: false,
   },
   render: ({ openOnHover, disabled }) => html`
-    <div style="padding: 1rem; border-radius: 0.5rem; background: linear-gradient(135deg, #f97316, #ec4899 45%, #6366f1);">
+    <div style="padding: 1rem; border-radius: 0.5rem;">
       <taqwa-menu ?open-on-hover=${openOnHover} ?disabled=${disabled}>
         <taqwa-button slot="trigger" variant="secondary">Song</taqwa-button>
         <taqwa-menu-item value="library">Add to library</taqwa-menu-item>
@@ -45,7 +45,7 @@ export const Disabled: Story = {
 
 export const CheckboxAndRadioItems: Story = {
   render: () => html`
-    <div style="padding: 1rem; border-radius: 0.5rem; background: linear-gradient(135deg, #f97316, #ec4899 45%, #6366f1);">
+    <div style="padding: 1rem; border-radius: 0.5rem;">
       <taqwa-menu>
         <taqwa-button slot="trigger" variant="secondary">View</taqwa-button>
         <taqwa-menu-group>
@@ -70,7 +70,7 @@ export const CheckboxAndRadioItems: Story = {
 
 export const Submenu: Story = {
   render: () => html`
-    <div style="padding: 1rem; border-radius: 0.5rem; background: linear-gradient(135deg, #f97316, #ec4899 45%, #6366f1);">
+    <div style="padding: 1rem; border-radius: 0.5rem;">
       <taqwa-menu>
         <taqwa-button slot="trigger" variant="secondary">File</taqwa-button>
         <taqwa-menu-item>New</taqwa-menu-item>

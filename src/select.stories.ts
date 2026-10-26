@@ -98,7 +98,7 @@ export const LiquidGlass: Story = {
   },
   render: () => html`
     <div
-      style="display: grid; place-items: center; min-height: 28rem; padding: 3rem; background: radial-gradient(circle at 20% 20%, #ff8a5b, transparent 45%), radial-gradient(circle at 80% 30%, #5b8cff, transparent 50%), linear-gradient(135deg, #2a7221, #f5c542);"
+      style="display: grid; place-items: center; min-height: 28rem; padding: 3rem;"
     >
       <taqwa-select name="apple" placeholder="Pick an apple">${items(fruits)}</taqwa-select>
     </div>

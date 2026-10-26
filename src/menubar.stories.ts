@@ -18,7 +18,7 @@ const meta = {
     orientation: { control: 'inline-radio', options: ['horizontal', 'vertical'] },
   },
   render: ({ orientation, loopFocus }) => html`
-    <div style="padding: 2.5rem; border-radius: 0.5rem; background: linear-gradient(135deg, #f97316, #ec4899 45%, #6366f1);">
+    <div style="padding: 2.5rem; border-radius: 0.5rem;">
       <taqwa-menubar orientation=${orientation} loop-focus=${String(loopFocus)}>
         <taqwa-menu>
           <taqwa-button slot="trigger" variant="tertiary">File</taqwa-button>

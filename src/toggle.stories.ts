@@ -58,7 +58,7 @@ export const Formatting: Story = {
 export const OnColorfulBackground: Story = {
   render: () => html`
     <div
-      style="display: flex; gap: 0.75rem; padding: 2rem; border-radius: 1rem; background: linear-gradient(135deg, #f97316, #ec4899 45%, #6366f1);"
+      style="display: flex; gap: 0.75rem; padding: 2rem; border-radius: 1rem;"
     >
       <taqwa-toggle aria-label="Bold">${icon(Bold)}</taqwa-toggle>
       <taqwa-toggle aria-label="Italic" pressed>${icon(Italic)}</taqwa-toggle>

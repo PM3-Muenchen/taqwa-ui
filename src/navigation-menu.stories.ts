@@ -8,7 +8,7 @@ const meta = {
   component: 'taqwa-navigation-menu',
   parameters: { layout: 'fullscreen' },
   render: () => html`
-    <div style="padding: 2.5rem; min-height: 22rem; background: linear-gradient(135deg, #f97316, #ec4899 45%, #6366f1);">
+    <div style="padding: 2.5rem; min-height: 22rem;">
       <taqwa-navigation-menu>
         <taqwa-navigation-menu-item>
           <taqwa-button slot="trigger" variant="tertiary">Product</taqwa-button>

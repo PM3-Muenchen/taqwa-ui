@@ -4,12 +4,7 @@ import './dialog';
 import './button';
 import type { TaqwaDialog } from './dialog';
 
-const stage = `min-height: 100vh; display: grid; place-items: center; padding: 2rem; box-sizing: border-box;
-  background:
-    radial-gradient(circle at 18% 28%, #ffb4a2 0, transparent 38%),
-    radial-gradient(circle at 82% 18%, #6ee7b7 0, transparent 42%),
-    radial-gradient(circle at 70% 88%, #818cf8 0, transparent 46%),
-    linear-gradient(135deg, #f59e0b 0%, #ec4899 55%, #0ea5e9 100%);`;
+const stage = `min-height: 100vh; display: grid; place-items: center; padding: 2rem; box-sizing: border-box;`;
 
 type Args = Pick<TaqwaDialog, 'modal' | 'disablePointerDismissal'> & {
   title: string;

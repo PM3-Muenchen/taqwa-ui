@@ -97,7 +97,7 @@ export const WithLabels: Story = {
 export const OnColorfulBackground: Story = {
   render: () => html`
     <div
-      style="padding: 2rem; border-radius: 1rem; background: linear-gradient(135deg, #22d3ee, #84cc16 50%, #facc15);"
+      style="padding: 2rem; border-radius: 1rem;"
     >
       <taqwa-toggle-group aria-label="Text formatting" multiple .value=${['bold']}>
         ${formats.map(

@@ -84,7 +84,7 @@ export const OpenOnHover: Story = {
 export const OnColour: Story = {
   render: (args) => html`
     <div
-      style="padding: 6rem 4rem; border-radius: 1rem; background: linear-gradient(135deg, #2a7221, #cfee9e 45%, #ff8a65 75%, #7e57c2);"
+      style="padding: 6rem 4rem; border-radius: 1rem;"
     >
       ${popover(args)}
     </div>

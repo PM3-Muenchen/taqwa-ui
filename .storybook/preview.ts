@@ -1,7 +1,7 @@
 export default {
   parameters: {
     controls: { expanded: true },
-    backgrounds: { options: { ivory: { name: 'Ivory', value: '#FAFFF2' } } },
+    // The Meadow backdrop (mesh + grain) is painted by preview-head.html so the glass has something to blur.
+    backgrounds: { disable: true },
   },
-  initialGlobals: { backgrounds: { value: 'ivory' } },
 };

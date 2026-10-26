@@ -62,7 +62,7 @@ export const Vertical: Story = {
 export const OnColorfulBackground: Story = {
   render: () => html`
     <div
-      style="padding: 2.5rem; border-radius: 1rem; background: linear-gradient(135deg, #22d3ee, #84cc16 50%, #facc15);"
+      style="padding: 2.5rem; border-radius: 1rem;"
     >
       <taqwa-toolbar aria-label="Text editing">
         <taqwa-toggle-group aria-label="Alignment">

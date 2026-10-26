@@ -3,12 +3,7 @@ import { html } from 'lit';
 import './alert-dialog';
 import './button';
 
-const stage = `min-height: 100vh; display: grid; place-items: center; padding: 2rem; box-sizing: border-box;
-  background:
-    radial-gradient(circle at 15% 80%, #fca5a5 0, transparent 40%),
-    radial-gradient(circle at 85% 20%, #fde68a 0, transparent 42%),
-    radial-gradient(circle at 60% 60%, #a78bfa 0, transparent 48%),
-    linear-gradient(160deg, #2a7221 0%, #0f766e 50%, #1e3a8a 100%);`;
+const stage = `min-height: 100vh; display: grid; place-items: center; padding: 2rem; box-sizing: border-box;`;
 
 type Args = {
   title: string;

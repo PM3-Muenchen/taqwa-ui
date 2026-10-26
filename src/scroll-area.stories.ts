@@ -54,7 +54,7 @@ export const OnGradient: Story = {
     layout: 'fullscreen',
   },
   render: () => html`
-    <div style="min-height: 100vh; display: grid; place-items: center; background: linear-gradient(135deg, #2a7221, #cfee9e 45%, #b42318 100%); padding: 2rem">
+    <div style="min-height: 100vh; display: grid; place-items: center; padding: 2rem">
       <taqwa-scroll-area style="height: 10rem; width: 22rem; max-width: 100%; border-radius: 0.375rem; background: rgb(255 255 255 / 0.2)">
         <div style="display: grid; gap: 0.75rem; padding: 0.75rem; font-size: 0.875rem">
           ${paragraphs.map((text) => html`<p style="margin: 0">${text}</p>`)}

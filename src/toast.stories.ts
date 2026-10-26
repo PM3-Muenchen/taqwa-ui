@@ -14,7 +14,7 @@ const meta = {
   },
   render: () => html`
     <div
-      style="min-height: 100vh; display: grid; place-content: center; gap: 0.75rem; padding: 2rem; background: linear-gradient(135deg, #2a7221 0%, #cfee9e 42%, #b42318 100%)"
+      style="min-height: 100vh; display: grid; place-content: center; gap: 0.75rem; padding: 2rem;"
     >
       <taqwa-toast-region></taqwa-toast-region>
       <taqwa-button variant="primary" @click=${() => toast.add({ title: 'Changes saved', description: 'Your profile was updated.' })}>
@@ -29,7 +29,7 @@ type Story = StoryObj;
 
 const page = (buttons: TemplateResult) => html`
   <div
-    style="min-height: 100vh; display: grid; place-content: center; gap: 0.75rem; padding: 2rem; background: linear-gradient(135deg, #2a7221 0%, #cfee9e 42%, #b42318 100%)"
+    style="min-height: 100vh; display: grid; place-content: center; gap: 0.75rem; padding: 2rem;"
   >
     <taqwa-toast-region></taqwa-toast-region>
     ${buttons}
