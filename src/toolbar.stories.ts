@@ -42,8 +42,6 @@ const meta = {
       <taqwa-toolbar-separator></taqwa-toolbar-separator>
       <taqwa-button variant="tertiary" aria-label="Cut">${icon(Scissors)}</taqwa-button>
       <taqwa-button variant="tertiary" aria-label="Copy">${icon(Copy)}</taqwa-button>
-      <taqwa-toolbar-separator></taqwa-toolbar-separator>
-      <a href="#">Edited 51m ago</a>
     </taqwa-toolbar>
   `,
 } satisfies Meta<Args>;
