@@ -403,12 +403,14 @@ export class TaqwaToast extends LitElement {
   updated() {
     if (this.item.closing) return this.#exit();
     const loading = this.item.type === 'loading';
+    const el = this.renderRoot.querySelector<HTMLElement>('.taqwa-toast-icon');
     if (loading && !this.#spinner && !prefersReducedMotion()) {
-      const el = this.renderRoot.querySelector<HTMLElement>('.taqwa-toast-icon');
-      if (el) this.#spinner = animate(el, { rotate: 360 }, { duration: 1, ease: 'linear', repeat: Infinity });
+      if (el) this.#spinner = animate(el, { rotate: [0, 360] }, { duration: 1, ease: 'linear', repeat: Infinity });
     } else if (!loading && this.#spinner) {
       this.#spinner.stop();
       this.#spinner = undefined;
+      // Lit reuses the icon span for the next glyph, so undo the spinner's leftover angle.
+      if (el) animate(el, { rotate: 0 }, { duration: 0 });
     }
   }
 
