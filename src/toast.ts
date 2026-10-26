@@ -439,11 +439,17 @@ export class TaqwaToast extends LitElement {
     if (this.#exiting) return;
     this.#exiting = true;
     const dir = this.#exitSwipe;
+    const { y = 0, scale = 1 } = this.#layout ?? {};
+    // Absolute targets: Motion's DOM animate ignores relative `'+=n'` strings. A plain close slides up and fades out.
     const move =
-      dir === 'left' ? { x: '-=400' } : dir === 'right' ? { x: '+=400' } : { y: dir === 'up' ? '-=300' : dir === 'down' ? '+=300' : '+=24' };
-    animate(this, { ...move, '--_fade': 0, scale: 0.96 } as DOMKeyframesDefinition, prefersReducedMotion() ? { duration: 0 } : { duration: 0.2, ease: 'easeIn' }).then(
-      () => this.dispatchEvent(new CustomEvent('toast-exited', { detail: this.item.id, bubbles: true })),
-    );
+      dir === 'left' ? { x: -400 } : dir === 'right' ? { x: 400 } : { y: y + (dir === 'down' ? 300 : dir === 'up' ? -300 : -32) };
+    animate(
+      this,
+      { ...move, '--_fade': 0, scale: scale * 0.96 } as DOMKeyframesDefinition,
+      prefersReducedMotion()
+        ? { duration: 0 }
+        : ({ duration: 0.3, ease: 'easeOut', '--_fade': { duration: 0.4, ease: 'easeInOut' } } as AnimationOptions),
+    ).then(() => this.dispatchEvent(new CustomEvent('toast-exited', { detail: this.item.id, bubbles: true })));
   }
 
   #onDown = (event: PointerEvent) => {
