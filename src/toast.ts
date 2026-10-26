@@ -428,9 +428,9 @@ export class TaqwaToast extends LitElement {
     this.#placed = true;
     animate(
       this,
-      { opacity: [0, opacity], y: [layout.y + 24, layout.y], scale: [0.96, layout.scale], filter: ['blur(6px)', 'blur(0px)'] },
+      { opacity: [0, opacity], y: [layout.y + 24, layout.y], scale: [0.96, layout.scale] },
       spring(),
-    ).then(() => this.style.removeProperty('filter'));
+    );
   }
 
   #exit() {
@@ -439,7 +439,7 @@ export class TaqwaToast extends LitElement {
     const dir = this.#exitSwipe;
     const move =
       dir === 'left' ? { x: '-=400' } : dir === 'right' ? { x: '+=400' } : { y: dir === 'up' ? '-=300' : dir === 'down' ? '+=300' : '+=24' };
-    animate(this, { ...move, opacity: 0, scale: 0.96, filter: 'blur(6px)' }, prefersReducedMotion() ? { duration: 0 } : { duration: 0.2, ease: 'easeIn' }).then(
+    animate(this, { ...move, opacity: 0, scale: 0.96 }, prefersReducedMotion() ? { duration: 0 } : { duration: 0.2, ease: 'easeIn' }).then(
       () => this.dispatchEvent(new CustomEvent('toast-exited', { detail: this.item.id, bubbles: true })),
     );
   }

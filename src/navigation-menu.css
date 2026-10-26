@@ -35,7 +35,6 @@
     @apply tq:glass-interactive tq:focus-ring tq:flex tq:min-h-11 tq:items-center tq:rounded-control tq:px-3 tq:text-body tq:no-underline tq:md:min-h-10 tq:md:px-2.5 tq:md:text-sm;
 
     --_glass-fill: transparent;
-    --_glass-tint: var(--tq-color-secondary);
     color: var(--tq-color-foreground);
   }
 

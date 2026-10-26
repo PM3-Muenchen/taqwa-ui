@@ -23,7 +23,7 @@
   --color-border: var(--taqwa-color-border, color-mix(in oklab, var(--tq-color-foreground) 14%, var(--tq-color-background)));
   --color-input: var(--taqwa-color-input, color-mix(in oklab, var(--tq-color-foreground) 48%, var(--tq-color-background)));
   --color-ring: var(--taqwa-color-ring, var(--tq-color-primary));
-  --color-surface: var(--taqwa-color-surface, color-mix(in oklab, var(--tq-color-background) 66%, transparent));
+  --color-surface: var(--taqwa-color-surface, color-mix(in oklab, var(--tq-color-background) 86%, transparent));
 
   --font-body: var(--taqwa-font-body, "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
   --font-heading: var(--taqwa-font-heading, "Stack Sans Headline", "Inter", ui-sans-serif, system-ui, sans-serif);
@@ -36,97 +36,37 @@
   --radius-control: var(--taqwa-radius-control, 0.25rem);
   --radius-surface: var(--taqwa-radius-surface, 0.375rem);
 
-  --blur-glass: var(--taqwa-glass-blur, 28px);
-  --glass-grain: var(
-    --taqwa-glass-grain,
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
-  );
-  --glass-rim: var(
-    --taqwa-glass-rim,
-    linear-gradient(
-      135deg,
-      color-mix(in oklab, white 95%, transparent),
-      color-mix(in oklab, white 18%, transparent) 30%,
-      color-mix(in oklab, var(--tq-color-foreground) 8%, transparent) 55%,
-      color-mix(in oklab, white 70%, transparent)
-    )
-  );
+  --blur-glass: var(--taqwa-glass-blur, 12px);
   --shadow-surface: var(
     --taqwa-shadow-surface,
     0 0 0 1px color-mix(in oklab, var(--tq-color-foreground) 9%, transparent),
-    inset 0 1px 0 color-mix(in oklab, white 75%, transparent),
     0 12px 32px -8px color-mix(in oklab, var(--tq-color-foreground) 24%, transparent),
     0 2px 6px -2px color-mix(in oklab, var(--tq-color-foreground) 12%, transparent)
   );
 }
 
-/*
- * Liquid glass for floating surfaces (popover, menu, dialog, toast, …): heavy frosted blur, film grain, and a
- * specular rim that is bright on the top-left / bottom-right edges and fades between (like iOS liquid glass).
- * The rim is an `::after`, so the element must be positioned (popups and dialogs already are: fixed).
- */
+/* Floating surfaces (popover, menu, dialog, toast, …): translucent ivory, light blur, hairline edge, soft shadow. */
 @utility glass-surface {
   background-color: var(--tq-color-surface);
-  background-image: var(--tq-glass-grain);
-  background-size: 160px 160px;
   /* Through a variable so Tailwind's optimizer keeps the unprefixed property. */
-  --_backdrop: blur(var(--tq-blur-glass)) saturate(1.8) brightness(1.04);
+  --_backdrop: blur(var(--tq-blur-glass));
   -webkit-backdrop-filter: var(--_backdrop);
   backdrop-filter: var(--_backdrop);
   box-shadow: var(--tq-shadow-surface);
   color: var(--tq-color-foreground);
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    pointer-events: none;
-    background: var(--tq-glass-rim);
-    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-  }
 }
 
 /*
- * Liquid glass for interactive controls. `--_glass` (0 → 1) is animated by `bindGlassMotion` / `animateGlass`
- * (src/internal/motion.ts), which also tracks the pointer in `--_glass-x` / `--_glass-y` for the moving specular
- * highlight. Set `--_glass-fill` to the control's resting background and optionally `--_glass-tint` for the sheen.
+ * Hover/press wash for interactive controls: `--_glass` (0 rest, 1 hover, 2 press) is animated by
+ * `bindGlassMotion` / `animateGlass` (src/internal/motion.ts) and mixes a faint `--_glass-tint` (default: the
+ * foreground) into `--_glass-fill`, the control's resting background.
  */
 @utility glass-interactive {
-  position: relative;
-  isolation: isolate;
-  background-color: color-mix(in oklab, var(--_glass-fill, transparent) calc(100% - var(--_glass, 0) * 28%), transparent);
-  /* Through a variable so Tailwind's optimizer keeps the unprefixed property. */
-  --_backdrop: blur(calc(var(--_glass, 0) * 14px)) saturate(calc(1 + var(--_glass, 0) * 0.8));
-  -webkit-backdrop-filter: var(--_backdrop);
-  backdrop-filter: var(--_backdrop);
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: inherit;
-    pointer-events: none;
-    opacity: var(--_glass, 0);
-    background:
-      radial-gradient(
-        120% 160% at var(--_glass-x, 50%) var(--_glass-y, 0%),
-        color-mix(in oklab, white 55%, transparent),
-        transparent 55%
-      ),
-      linear-gradient(
-        180deg,
-        color-mix(in oklab, var(--_glass-tint, white) 38%, transparent),
-        color-mix(in oklab, var(--_glass-tint, white) 6%, transparent)
-      );
-    box-shadow:
-      inset 0 1px 0.5px color-mix(in oklab, white 80%, transparent),
-      inset 0 -1px 0.5px color-mix(in oklab, white 30%, transparent),
-      inset 0 0 0 1px color-mix(in oklab, white 24%, transparent),
-      0 8px 22px -10px color-mix(in oklab, var(--tq-color-foreground) 40%, transparent);
-  }
+  background-color: color-mix(
+    in oklab,
+    var(--_glass-tint, var(--tq-color-foreground)) calc(var(--_glass, 0) * 6%),
+    var(--_glass-fill, transparent)
+  );
 }
 
 /* Shared control sizing: 44px touch targets on mobile, 40px from 48rem. */

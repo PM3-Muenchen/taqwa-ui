@@ -10,7 +10,6 @@
     @apply tq:glass-interactive tq:control-size tq:focus-ring tq:flex tq:w-full tq:min-w-44 tq:cursor-pointer tq:items-center tq:justify-between tq:gap-3 tq:rounded-control tq:border tq:border-input tq:text-left tq:text-foreground tq:select-none tq:disabled:cursor-not-allowed tq:disabled:opacity-50;
 
     --_glass-fill: var(--tq-color-background);
-    --_glass-tint: var(--tq-color-secondary);
     font-family: inherit;
     color: var(--tq-color-foreground);
   }
@@ -48,8 +47,6 @@
 
   .taqwa-option {
     @apply tq:glass-interactive tq:flex tq:min-h-11 tq:cursor-pointer tq:items-center tq:gap-2 tq:rounded-control tq:px-2.5 tq:py-2 tq:text-body tq:select-none tq:md:min-h-9 tq:md:text-sm;
-
-    --_glass-tint: var(--tq-color-secondary);
   }
 
   .taqwa-option[data-selected] {

@@ -488,7 +488,7 @@ export class TaqwaMenuSeparator extends LitElement {
 }
 
 /**
- * Dropdown menu: a trigger that opens a liquid-glass list of items. Nest a `taqwa-menu` inside to make a submenu.
+ * Dropdown menu: a trigger that opens a frosted list of items. Nest a `taqwa-menu` inside to make a submenu.
  * @summary Dropdown menu with keyboard navigation.
  * @fires open-change - `{ open, reason }`. Cancel to keep the menu as it is.
  * @slot trigger - Element that opens the menu (usually `taqwa-button`).

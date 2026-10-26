@@ -27,7 +27,6 @@
   .taqwa-button--tertiary {
     --_bg: transparent;
     --_fg: var(--tq-color-foreground);
-    --_glass-tint: var(--tq-color-secondary);
   }
 
   .taqwa-button--destructive {

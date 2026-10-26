@@ -2,7 +2,7 @@ import { html, unsafeCSS } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { TaqwaFormControl } from './internal/form-control';
-import { bindGlassMotion, fieldGlassMotion } from './internal/motion';
+import { bindGlassMotion } from './internal/motion';
 import styles from './input.css?inline';
 
 const VALIDITY_FLAGS = [
@@ -127,7 +127,6 @@ export class TaqwaInput extends TaqwaFormControl {
   #bindMotion() {
     this.#unbindMotion = bindGlassMotion(this.renderRoot.querySelector('.taqwa-input') as HTMLElement, {
       disabled: () => this.isDisabled,
-      preset: fieldGlassMotion,
     });
   }
 }

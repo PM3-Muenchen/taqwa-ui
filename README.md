@@ -1,6 +1,6 @@
 # Taqwa UI
 
-Lit web components that port every [Base UI](https://base-ui.com) component, styled with a calm green palette and iOS-style liquid glass. They work in plain HTML, React and Astro, or any other framework.
+Lit web components that port every [Base UI](https://base-ui.com) component, styled with a calm green palette and quiet frosted-glass surfaces. They work in plain HTML, React and Astro, or any other framework.
 
 See [`DESIGN.md`](./DESIGN.md) for the design system (tokens, roles, spacing, motion).
 
@@ -127,7 +127,7 @@ Style an element's internals through its parts (`taqwa-button::part(base)`), and
 
 ## Motion
 
-Animations use [Motion](https://motion.dev/) and respect `prefers-reduced-motion`. Interactive controls turn to liquid glass on hover, and pressing gives a springy swell. `taqwa-button` accepts custom animations through `motionOptions`:
+Animations use [Motion](https://motion.dev/) and respect `prefers-reduced-motion`. Interactive controls get a faint wash on hover and press. `taqwa-button` accepts custom animations through `motionOptions`:
 
 ```ts
 button.motionOptions = { hover: { scale: 1.05 }, press: { scale: 0.96 }, rest: { scale: 1 } };

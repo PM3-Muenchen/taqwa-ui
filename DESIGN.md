@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Taqwa
-description: Calm, green, mobile-first web components with liquid-glass surfaces. A Lit port of Base UI.
+description: Calm, green, mobile-first web components with quiet frosted surfaces. A Lit port of Base UI.
 colors:
   primary: "#2A7221"
   on-primary: "#FAFFF2"
@@ -9,7 +9,7 @@ colors:
   on-secondary: "#152614"
   neutral: "#FAFFF2"
   on-surface: "#152614"
-  surface: "#FAFFF2A8"
+  surface: "#FAFFF2DB"
   muted: "#EDF3E5"
   on-muted: "#566452"
   accent: "#E6F8CD"
@@ -161,7 +161,7 @@ components:
 
 Taqwa is quiet, grounded, and organic. Deep evergreen ink sits on an ivory page, with a single living green for action and a soft lime cream for selection. Layouts are **relaxed**: generous padding and gaps, never cramped. They are built **mobile first**, with comfortable 44px touch targets that tighten slightly on laptops (≥ 768px).
 
-The signature material is **liquid glass**, in the spirit of iOS: floating surfaces are thick frosted panes with a bright specular rim. Interactive controls are calm at rest and turn to glass when touched or hovered. A highlight follows the pointer, and pressing makes the control swell gently with a springy, jelly-like bounce.
+The material is **quiet frosted glass**: floating surfaces are lightly blurred, translucent Ivory panes with a hairline edge. Interactive controls are flat and only take on a faint Evergreen wash when hovered or pressed. Nothing scales, bounces or glints; motion is a short, plain fade.
 
 Components are Lit web components (Shadow DOM) that work in plain HTML, React (19 natively, or with the `@pm3/taqwa-ui/react` wrappers) and Astro.
 
@@ -172,7 +172,7 @@ The palette has four brand colours and two functional colours (red and amber).
 - **Evergreen (#152614):** the ink. Used for all text, icons and strong outlines. 15.6:1 on Ivory.
 - **Ivory (#FAFFF2):** the page and every surface. A warm, faintly green white. It also works as text on Green and Red.
 - **Green (#2A7221):** the only action colour. Used for primary buttons, checked and active states, slider ranges, and the focus ring. Ivory on Green is 5.9:1 (AA).
-- **Lime cream (#CFEE9E):** selection and secondary emphasis. Used for secondary buttons, pressed toggles, progress and slider tracks, and the highlight tint on glass. Always paired with Evergreen text (12.4:1).
+- **Lime cream (#CFEE9E):** selection and secondary emphasis. Used for secondary buttons, pressed toggles, progress and slider tracks, Always paired with Evergreen text (12.4:1).
 - **Signal red (#B42318):** errors and destructive actions only. 6.5:1 on Ivory.
 - **Amber (#9A6200):** warning icons in toasts only. 5.0:1 on Ivory.
 
@@ -208,19 +208,19 @@ The package ships no font files. Load them in the app, for example from Google F
 
 ## Elevation & Depth
 
-Depth comes from **material**, not just shadow.
+Depth stays flat and calm.
 
 - **Page level:** flat Ivory.
-- **Floating level (liquid glass):**
-  - translucent Ivory (66%)
-  - `backdrop-filter: blur(28px) saturate(1.8)`
-  - a faint film grain
-  - a 1px specular rim: bright at the top-left and bottom-right, fading through the middle
+- **Floating level (frosted glass):**
+  - translucent Ivory (86%)
+  - `backdrop-filter: blur(12px)`
+  - a 1px Evergreen hairline edge (9%)
   - a soft, wide evergreen-tinted drop shadow
-- **Interactive glass:** controls at rest are flat. Hover lifts the fill to about 72% opacity with a 14px blur, a pointer-tracking radial highlight, and inner top and bottom light edges. Press swells to scale 1.04 on a bouncy spring (visual duration 0.3s, bounce 0.35).
+- **Interactive controls:** flat at rest, with transparent backgrounds for list and menu rows. Hover mixes 6% Evergreen into the resting fill and press 12%, over 0.2s ease-out. No scale, blur or highlight.
+- **Popups:** fade in with a 2% scale over 0.18s.
 - **Modal backdrop:** frosted evergreen wash over the page.
 
-All motion uses Motion (`motion`) springs; CSS transitions are not used. With `prefers-reduced-motion`, every animation is instant and only colour and opacity states change.
+All motion uses Motion (`motion`); CSS transitions are not used. With `prefers-reduced-motion`, every animation is instant and only colour and opacity states change.
 
 ## Shapes
 
@@ -236,11 +236,11 @@ Bottom sheets round only their top corners.
 
 All 37 Base UI components are available as `taqwa-*` custom elements.
 
-- **Buttons:** primary (Green), secondary (Lime cream), tertiary (transparent with a lime glass tint on hover), destructive (Red). All 44px tall on mobile and 40px from 768px.
+- **Buttons:** primary (Green), secondary (Lime cream), tertiary (transparent with a faint Evergreen wash on hover), destructive (Red). All 44px tall on mobile and 40px from 768px.
 - **Inputs:** an Ivory field with an input-coloured 1px outline. Focus shows a 2px Green ring offset by 2px. The invalid state uses a red outline with the message below in red, 13px.
 - **Selection controls:** checked state is a Green fill with an Ivory icon. Pressed toggles and selected options use the Lime cream accent.
-- **Lists and menus:** 44px rows on mobile and 36–40px from 768px. The highlighted row turns to glass with a lime tint.
-- **Floating surfaces** (popover, menu, select, tooltip, preview card, toast, dialog, drawer) all use the liquid glass material.
+- **Lists and menus:** 44px rows on mobile and 36–40px from 768px. Rows are transparent; the highlighted row gets the faint Evergreen wash.
+- **Floating surfaces** (popover, menu, select, tooltip, preview card, toast, dialog, drawer) all use the frosted glass material.
 
 ## Do's and Don'ts
 

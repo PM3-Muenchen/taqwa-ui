@@ -5,7 +5,7 @@
     display: block;
   }
 
-  /* Wrapper carries the glass and the border; `<input>` cannot render ::before, so the glass lives here. */
+  /* Wrapper carries the hover wash and the border. */
   .taqwa-input {
     @apply tq:glass-interactive tq:control-size tq:flex tq:w-full tq:items-center tq:rounded-control tq:border tq:border-input tq:text-foreground;
 

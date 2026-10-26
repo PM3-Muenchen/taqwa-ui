@@ -8,20 +8,12 @@ export interface MotionOptions {
   transition?: AnimationOptions;
 }
 
-// Liquid glass: hover frosts the control, press swells it with a jelly spring (like iOS 26 controls).
+// Hover deepens the wash a little, press a little more. No scale, no bounce.
 export const glassMotion: Required<MotionOptions> = {
-  hover: { '--_glass': 1, scale: 1.015 } as DOMKeyframesDefinition,
-  press: { '--_glass': 1, scale: 1.04 } as DOMKeyframesDefinition,
-  rest: { '--_glass': 0, scale: 1 } as DOMKeyframesDefinition,
-  transition: { type: 'spring', visualDuration: 0.3, bounce: 0.35 },
-};
-
-/** Text fields frost on hover/press but never scale (a swelling text box feels wrong). */
-export const fieldGlassMotion: Required<MotionOptions> = {
-  ...glassMotion,
   hover: { '--_glass': 1 } as DOMKeyframesDefinition,
-  press: { '--_glass': 1 } as DOMKeyframesDefinition,
+  press: { '--_glass': 2 } as DOMKeyframesDefinition,
   rest: { '--_glass': 0 } as DOMKeyframesDefinition,
+  transition: { duration: 0.2, ease: 'easeOut' },
 };
 
 /** SSR-safe: false outside the browser. */
@@ -36,13 +28,9 @@ const instant: AnimationOptions = { duration: 0 };
  */
 export function bindGlassMotion(
   target: HTMLElement,
-  {
-    disabled = () => false,
-    options = () => undefined,
-    preset = glassMotion,
-  }: { disabled?: () => boolean; options?: () => MotionOptions | undefined; preset?: Required<MotionOptions> } = {},
+  { disabled = () => false, options = () => undefined }: { disabled?: () => boolean; options?: () => MotionOptions | undefined } = {},
 ): VoidFunction {
-  const resolve = () => ({ ...preset, ...options() });
+  const resolve = () => ({ ...glassMotion, ...options() });
   const play = (state: 'hover' | 'press' | 'rest', force = false) => {
     const custom = options();
     const { [state]: keyframes, transition } = resolve();
@@ -50,17 +38,7 @@ export function bindGlassMotion(
     animate(target, keyframes, !custom && prefersReducedMotion() ? instant : transition);
   };
   let hovered = false;
-  // Specular highlight follows the pointer.
-  const track = (event: PointerEvent) => {
-    const rect = target.getBoundingClientRect();
-    target.style.setProperty('--_glass-x', `${((event.clientX - rect.left) / rect.width) * 100}%`);
-    target.style.setProperty('--_glass-y', `${((event.clientY - rect.top) / rect.height) * 100}%`);
-  };
-  target.addEventListener('pointermove', track);
-  target.addEventListener('pointerdown', track);
   const unbind = [
-    () => target.removeEventListener('pointermove', track),
-    () => target.removeEventListener('pointerdown', track),
     hover(target, () => {
       hovered = true;
       play('hover');
@@ -77,7 +55,7 @@ export function bindGlassMotion(
   return () => unbind.forEach((fn) => fn());
 }
 
-/** Animate the glass level directly, e.g. for keyboard-highlighted list items (0 = rest, 1 = full glass). */
+/** Animate the glass level directly, e.g. for keyboard-highlighted list items (0 = rest, 1 = highlighted). */
 export function animateGlass(target: Element, level: number) {
   return animate(target, { '--_glass': level } as DOMKeyframesDefinition, prefersReducedMotion() ? instant : glassMotion.transition);
 }
@@ -91,13 +69,13 @@ const offsets: Record<Side, { x?: number; y?: number }> = {
   right: { x: -6 },
 };
 
-/** Popup enter: frosted blur + scale + fade, nudged in from `side`. */
+/** Popup enter: fade + slight scale, nudged in from `side`. */
 export function animatePopupIn(target: HTMLElement, side: Side = 'bottom') {
   const { x = 0, y = 0 } = offsets[side];
   return animate(
     target,
-    { opacity: [0, 1], scale: [0.96, 1], x: [x, 0], y: [y, 0], filter: ['blur(6px)', 'blur(0px)'] },
-    prefersReducedMotion() ? instant : { type: 'spring', visualDuration: 0.24, bounce: 0.12 },
+    { opacity: [0, 1], scale: [0.98, 1], x: [x, 0], y: [y, 0] },
+    prefersReducedMotion() ? instant : { duration: 0.18, ease: 'easeOut' },
   );
 }
 
@@ -106,7 +84,7 @@ export function animatePopupOut(target: HTMLElement, side: Side = 'bottom') {
   const { x = 0, y = 0 } = offsets[side];
   return animate(
     target,
-    { opacity: 0, scale: 0.97, x, y, filter: 'blur(4px)' },
+    { opacity: 0, scale: 0.98, x, y },
     prefersReducedMotion() ? instant : { duration: 0.14, ease: 'easeIn' },
   );
 }

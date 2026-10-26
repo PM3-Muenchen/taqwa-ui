@@ -3,6 +3,8 @@
 @layer components {
   :host {
     display: block;
+    /* Items draw their own focus ring; drop the UA one on the focused host. */
+    outline: none;
   }
 
   :host(taqwa-menu:not([submenu])) {
@@ -24,7 +26,6 @@
     @apply tq:glass-interactive tq:flex tq:min-h-11 tq:w-full tq:cursor-pointer tq:items-center tq:gap-2 tq:rounded-control tq:px-3 tq:text-body tq:select-none tq:md:min-h-10 tq:md:px-2.5 tq:md:text-sm;
 
     --_glass-fill: transparent;
-    --_glass-tint: var(--tq-color-secondary);
   }
 
   :host(:focus-visible) .taqwa-menu-item {
