@@ -1,17 +1,7 @@
-import { withThemeByDataAttribute } from '@storybook/addon-themes';
-
 export default {
-  decorators: [
-    withThemeByDataAttribute({
-      themes: {
-        light: 'light',
-        dark: 'dark',
-      },
-      defaultTheme: 'light',
-      attributeName: 'data-theme',
-    }),
-  ],
   parameters: {
     controls: { expanded: true },
+    backgrounds: { options: { ivory: { name: 'Ivory', value: '#FAFFF2' } } },
   },
+  initialGlobals: { backgrounds: { value: 'ivory' } },
 };

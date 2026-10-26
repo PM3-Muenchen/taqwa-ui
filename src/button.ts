@@ -1,26 +1,10 @@
 import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { animate, hover, press, type AnimationOptions, type DOMKeyframesDefinition } from 'motion';
+import { bindGlassMotion, type MotionOptions } from './internal/motion';
 import styles from './button.css?inline';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
-
-export interface ButtonMotionOptions {
-  hover?: DOMKeyframesDefinition;
-  press?: DOMKeyframesDefinition;
-  /** State animated back to when hover or press ends. */
-  rest?: DOMKeyframesDefinition;
-  transition?: AnimationOptions;
-}
-
-const defaultMotion: ButtonMotionOptions = {
-  hover: { scale: 1.02 },
-  press: { scale: 0.98 },
-  rest: { scale: 1 },
-  transition: { duration: 0.15 },
-};
-
-const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'destructive';
+export type ButtonMotionOptions = MotionOptions;
 
 @customElement('taqwa-button')
 export class TaqwaButton extends LitElement {
@@ -31,11 +15,11 @@ export class TaqwaButton extends LitElement {
   @property({ reflect: true }) variant: ButtonVariant = 'primary';
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ reflect: true }) type: 'button' | 'submit' | 'reset' = 'button';
-  /** Overrides the default hover/press animations. Explicit options ignore reduced motion, like `motionProps` did. */
+  /** Overrides the default glass hover/press animations. Explicit options ignore reduced motion. */
   @property({ attribute: false }) motionOptions?: ButtonMotionOptions;
 
   #internals = this.attachInternals();
-  #unbindMotion: VoidFunction[] = [];
+  #unbindMotion?: VoidFunction;
 
   render() {
     return html`<button
@@ -58,8 +42,7 @@ export class TaqwaButton extends LitElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.#unbindMotion.forEach((unbind) => unbind());
-    this.#unbindMotion = [];
+    this.#unbindMotion?.();
   }
 
   // The inner button lives in the shadow root, so it cannot submit the host's form itself.
@@ -71,29 +54,10 @@ export class TaqwaButton extends LitElement {
   }
 
   #bindMotion() {
-    const button = this.renderRoot.querySelector('button')!;
-    const options = () => ({ ...defaultMotion, ...this.motionOptions });
-    const play = (target: keyof ButtonMotionOptions, force = false) => {
-      const { [target]: keyframes, transition } = options();
-      const enabled = !this.disabled && (this.motionOptions || !reducedMotion.matches);
-      if (keyframes && (force || enabled)) animate(button, keyframes as DOMKeyframesDefinition, transition);
-    };
-    let hovered = false;
-
-    this.#unbindMotion = [
-      hover(button, () => {
-        hovered = true;
-        play('hover');
-        return () => {
-          hovered = false;
-          play('rest', true);
-        };
-      }),
-      press(button, () => {
-        play('press');
-        return () => play(hovered ? 'hover' : 'rest', !hovered);
-      }),
-    ];
+    this.#unbindMotion = bindGlassMotion(this.renderRoot.querySelector('button')!, {
+      disabled: () => this.disabled,
+      options: () => this.motionOptions,
+    });
   }
 }
 

@@ -21,7 +21,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'tertiary'],
+      options: ['primary', 'secondary', 'tertiary', 'destructive'],
     },
   },
   render: ({ label, variant, disabled, motionOptions }) => html`
