@@ -355,7 +355,6 @@ export class TaqwaToast extends LitElement {
   #layout?: ToastLayout;
   #placed = false;
   #exiting = false;
-  #exitSwipe?: ToastSwipeDirection;
   #drag?: { x: number; y: number; t: number; moved: number };
   #spinner?: ReturnType<typeof animate>;
 
@@ -438,17 +437,10 @@ export class TaqwaToast extends LitElement {
   #exit() {
     if (this.#exiting) return;
     this.#exiting = true;
-    const dir = this.#exitSwipe;
-    const { y = 0, scale = 1 } = this.#layout ?? {};
-    // Absolute targets: Motion's DOM animate ignores relative `'+=n'` strings. A plain close slides left (into the page) and fades out.
-    const move =
-      dir === 'right' ? { x: 400 } : dir === 'up' || dir === 'down' ? { y: y + (dir === 'down' ? 300 : -300) } : { x: dir === 'left' ? -400 : -48 };
     animate(
       this,
-      { ...move, '--_fade': 0, scale: scale * 0.96 } as DOMKeyframesDefinition,
-      prefersReducedMotion()
-        ? { duration: 0 }
-        : ({ duration: 0.3, ease: 'easeOut', '--_fade': { duration: 0.4, ease: 'easeInOut' } } as AnimationOptions),
+      { '--_fade': 0 } as DOMKeyframesDefinition,
+      prefersReducedMotion() ? { duration: 0 } : { duration: 0.4, ease: 'easeInOut' },
     ).then(() => this.dispatchEvent(new CustomEvent('toast-exited', { detail: this.item.id, bubbles: true })));
   }
 
@@ -476,12 +468,8 @@ export class TaqwaToast extends LitElement {
     if (!drag || !this.#layout) return;
     const distance = Math.abs(drag.moved);
     const speed = distance / Math.max(1, event.timeStamp - drag.t);
-    if (distance > 48 || (speed > 0.6 && distance > 16)) {
-      this.#exitSwipe = this.#layout.swipe;
-      toast.close(this.item.id);
-    } else {
-      this.place(this.#layout);
-    }
+    if (distance > 48 || (speed > 0.6 && distance > 16)) toast.close(this.item.id);
+    else this.place(this.#layout);
   };
 }
 
