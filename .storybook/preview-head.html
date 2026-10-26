@@ -2,25 +2,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Stack+Sans+Headline:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap" />
 <style>
-  /* Meadow backdrop: lime cream, pale mint and fresh green mesh over ivory, plus grain. Storybook only. */
-  :root {
-    --meadow-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.09'/%3E%3C/svg%3E");
-    --meadow-mesh:
-      radial-gradient(70% 65% at 2% 0%, #e2f3aa 0%, rgb(226 243 170 / 0) 72%),
-      radial-gradient(42% 46% at 90% 4%, #d2edab 0%, rgb(210 237 171 / 0) 70%),
-      radial-gradient(55% 50% at 50% 46%, #dbf2e5 0%, rgb(219 242 229 / 0) 72%),
-      radial-gradient(48% 52% at 4% 98%, #c9e9cd 0%, rgb(201 233 205 / 0) 70%),
-      radial-gradient(72% 72% at 100% 100%, #b9e2a6 0%, rgb(185 226 166 / 0) 72%);
-  }
+  /* Meadow page: solid Ivory. Storybook only. */
   body,
   .docs-story {
-    background-color: #f3f8e7;
-    background-image: var(--meadow-grain), var(--meadow-mesh);
+    background: #fafff2;
   }
   body {
     margin: 0;
     min-height: 100vh;
-    background-attachment: fixed;
     color: #152614;
     font-family: 'Inter', system-ui, sans-serif;
   }

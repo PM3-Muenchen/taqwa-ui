@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Taqwa
-description: Calm, green, mobile-first web components with frosted glass over a soft meadow. A Lit port of Base UI.
+description: Calm, green, mobile-first web components with frosted glass on a solid Ivory page. A Lit port of Base UI.
 colors:
   primary: "#21602A"
   on-primary: "#FAFFF2"
@@ -160,7 +160,7 @@ components:
 
 ## Overview
 
-Taqwa is calm, airy and professional: **Frosted Meadow**. Deep evergreen ink sits on frosted ivory glass, and the glass floats over a soft meadow of lime cream, pale mint and fresh green. A single deep, refined green carries the action; lime cream marks selection. Layouts are **relaxed**: generous padding and gaps, never cramped. They are built **mobile first**, with comfortable 44px touch targets that tighten slightly on laptops (≥ 768px).
+Taqwa is calm, airy and professional: **Frosted Meadow**. Deep evergreen ink sits on frosted ivory glass, and the glass floats over a solid Ivory page. A single deep, refined green carries the action; lime cream marks selection. Layouts are **relaxed**: generous padding and gaps, never cramped. They are built **mobile first**, with comfortable 44px touch targets that tighten slightly on laptops (≥ 768px).
 
 The material is **visible frosted glass**: floating surfaces are translucent ivory panes over a strong, saturated blur, with a white top highlight, a hairline edge, a soft green-tinted shadow and a fine film grain. Controls are calm and flat; solid buttons get a faint vertical sheen and an inner highlight. Motion stays plain: short fades, and buttons give a barely-there 0.98 press.
 
@@ -197,7 +197,7 @@ Every value can be overridden at runtime with a `--taqwa-color-*` custom propert
 
 ### Contrast (WCAG AA)
 
-Glass and field ratios are measured over the darkest meadow stop (#B9E2A6), which is the worst case; over Ivory they are higher.
+The page is solid Ivory. Glass and field ratios are measured over `#B9E2A6`, the darkest colour an app may put behind the glass (a photo, illustration or gradient), which is the worst case; over Ivory they are higher.
 
 | Pair | Ratio |
 | --- | --- |
@@ -217,10 +217,9 @@ Glass and field ratios are measured over the darkest meadow stop (#B9E2A6), whic
 | Evergreen / field (worst) | 14.28 |
 | Placeholder (muted) / field (worst) | 6.40 |
 | Muted text / tabs track (worst) | 5.76 |
-| Muted text / bare meadow (worst) | 4.92 |
 | Input outline / field (worst) | 4.03 (non-text) |
-| Input outline / meadow (worst) | 3.10 (non-text) |
-| Focus ring (Green) / meadow (worst) | 5.23 (non-text) |
+| Input outline / Ivory | 4.41 (non-text) |
+| Focus ring (Green) / Ivory | 7.45 (non-text) |
 | Green range / Lime cream track | 6.21 (non-text) |
 
 ## Typography
@@ -247,7 +246,7 @@ The package ships no font files. Load them in the app, for example from Google F
 
 Depth comes from a real material, not from darkness.
 
-- **Page level (the meadow):** the glass needs colour behind it. The recommended app background is Ivory-tinted `#F3F8E7` with a mesh of large radial gradients: lime cream `#E2F3AA` top left, `#D2EDAB` top right, pale mint `#DBF2E5` centre, `#C9E9CD` bottom left and fresh green `#B9E2A6` bottom right, all fading to transparent at about 70%, plus a grain layer at ~9% (the same SVG noise as below). Keep every stop at least as light as `#B9E2A6` so the contrast table holds. The package ships no backdrop; Storybook paints this one in `.storybook/preview-head.html`.
+- **Page level:** solid Ivory (`#FAFFF2`), with no gradient or grain. The package ships no page background; set it in your app (Storybook does in `.storybook/preview-head.html`). Anything placed behind the glass should stay at least as light as `#B9E2A6` so the contrast table holds.
 - **Floating level (frosted glass):** `glass-surface`
   - Ivory at 64% (`--taqwa-color-surface`)
   - `backdrop-filter: blur(22px) saturate(160%)` (`--taqwa-glass-blur`, `--taqwa-glass-saturate`)
@@ -258,7 +257,7 @@ Depth comes from a real material, not from darkness.
 - **Controls:** fields are white at 70% with the input outline. Tabs and toggle groups sit in a translucent track (muted at 60% with a hairline). Hover mixes 6% Evergreen into the resting fill and press 12%, over 0.2s ease-out.
 - **Buttons:** primary and destructive have a 10% white top-to-bottom sheen, a white inner top highlight and a soft contact shadow tinted with their own colour. Secondary has a white inner highlight and a faint Green inner hairline so it holds its edge on lime areas.
 - **Popups:** fade in with a 2% scale over 0.18s.
-- **Modal backdrop:** a light Evergreen veil (12%) with `blur(8px) saturate(1.5)`, so the meadow stays fresh behind the dialog.
+- **Modal backdrop:** a light Evergreen veil (12%) with `blur(8px) saturate(1.5)`, so the page stays fresh behind the dialog.
 
 All motion uses Motion (`motion`); CSS transitions are not used. Buttons scale to 0.98 while pressed (`bindGlassMotion`'s `pressScale`). With `prefers-reduced-motion`, every animation is instant, nothing scales, and only colour and opacity states change.
 
@@ -285,14 +284,14 @@ All 37 Base UI components are available as `taqwa-*` custom elements.
 
 ## Do's and Don'ts
 
-- Do put the glass over colour: the meadow backdrop (or a photo, illustration or gradient). Over flat Ivory it reads as a plain card.
+- Do keep the page solid Ivory. The glass reads as a calm card on it; it frosts visibly only over content such as a photo, illustration or gradient.
 - Do use Green for the single most important action in a view. Use secondary or tertiary for everything else.
 - Do pair Lime cream with Evergreen text only. Never put Ivory or Green text on Lime cream for body copy.
 - Do keep 44px touch targets on mobile, even when the visual mark is smaller (checkbox 20px, slider thumb).
 - Do reserve Instrument Serif for display moments. Don't use it inside controls.
 - Don't stack glass on glass more than one level deep (a popup over a glass card is the limit), because the blur turns muddy.
 - Don't put a non-modal dialog inside an element with `backdrop-filter`: that element becomes its containing block. Modal dialogs and popups live in the top layer and are fine.
-- Don't make meadow stops darker than `#B9E2A6`, or the muted text on glass drops below AA.
+- Don't put anything darker than `#B9E2A6` behind the glass, or the muted text on glass drops below AA.
 - Don't add grain to buttons or small controls; it belongs to the page and to glass panes.
 - Don't use red for anything other than errors and destructive actions.
 - Don't mix rounded-full pills with 8px controls in the same group (except avatars and switches).

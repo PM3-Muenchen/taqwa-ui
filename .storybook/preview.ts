@@ -1,7 +1,7 @@
 export default {
   parameters: {
     controls: { expanded: true },
-    // The Meadow backdrop (mesh + grain) is painted by preview-head.html so the glass has something to blur.
+    // The solid Ivory page is painted by preview-head.html.
     backgrounds: { disable: true },
   },
 };
