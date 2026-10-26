@@ -26,6 +26,9 @@
     @apply tq:absolute tq:size-2.5 tq:rotate-45;
     /* Only the half outside the popup is drawn, so it never doubles the glass tint. */
     background-color: var(--tq-color-surface);
+    /* Same hairline as the surface edge; the clip keeps only the two outer sides. */
+    box-sizing: border-box;
+    border: 1px solid color-mix(in oklab, var(--tq-color-foreground) 11%, transparent);
   }
 
   .taqwa-popup__arrow[data-side="top"] {
