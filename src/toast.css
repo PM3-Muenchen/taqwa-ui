@@ -51,10 +51,28 @@
 
   .taqwa-toast {
     @apply tq:glass-surface tq:relative tq:w-full tq:rounded-surface tq:text-body tq:md:text-sm;
+
+    /* `--_fade` (set on the host by the enter/exit animation) fades fill, blur, shadow and content; clamped for spring overshoot. */
+    --_f: clamp(0, var(--_fade, 1), 1);
+    --_backdrop: blur(calc(var(--_f) * var(--tq-blur-glass)));
+    background-color: color-mix(in oklab, var(--tq-color-surface) calc(var(--_f) * 100%), transparent);
+    box-shadow: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow: var(--tq-shadow-surface);
+      opacity: var(--_f);
+      pointer-events: none;
+    }
   }
 
   .taqwa-toast-content {
     @apply tq:flex tq:items-start tq:gap-3 tq:p-4;
+
+    opacity: var(--_f);
   }
 
   .taqwa-toast-icon {

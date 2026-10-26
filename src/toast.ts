@@ -2,7 +2,7 @@ import { LitElement, html, nothing, unsafeCSS } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { repeat } from 'lit/directives/repeat.js';
-import { animate, type AnimationOptions } from 'motion';
+import { animate, type AnimationOptions, type DOMKeyframesDefinition } from 'motion';
 import { uid } from './internal/a11y';
 import { CircleAlert, CircleCheck, Info, LoaderCircle, TriangleAlert, X, icon } from './internal/icons';
 import { prefersReducedMotion } from './internal/motion';
@@ -420,15 +420,17 @@ export class TaqwaToast extends LitElement {
     this.toggleAttribute('data-behind', layout.behind);
     this.style.zIndex = String(1000 - layout.index);
     if (this.#exiting || this.item.closing) return;
-    const opacity = layout.hidden ? 0 : 1;
+    // Fade through `--_fade`, not `opacity`: opacity < 1 on an ancestor switches off the card's backdrop blur.
+    const fade = layout.hidden ? 0 : 1;
     if (this.#placed) {
-      animate(this, { x: 0, y: layout.y, scale: layout.scale, opacity }, spring());
+      animate(this, { x: 0, y: layout.y, scale: layout.scale, '--_fade': fade } as DOMKeyframesDefinition, spring());
       return;
     }
     this.#placed = true;
+    this.style.setProperty('--_fade', '0');
     animate(
       this,
-      { opacity: [0, opacity], y: [layout.y + 24, layout.y], scale: [0.96, layout.scale] },
+      { '--_fade': [0, fade], y: [layout.y + 24, layout.y], scale: [0.96, layout.scale] } as DOMKeyframesDefinition,
       spring(),
     );
   }
@@ -439,7 +441,7 @@ export class TaqwaToast extends LitElement {
     const dir = this.#exitSwipe;
     const move =
       dir === 'left' ? { x: '-=400' } : dir === 'right' ? { x: '+=400' } : { y: dir === 'up' ? '-=300' : dir === 'down' ? '+=300' : '+=24' };
-    animate(this, { ...move, opacity: 0, scale: 0.96 }, prefersReducedMotion() ? { duration: 0 } : { duration: 0.2, ease: 'easeIn' }).then(
+    animate(this, { ...move, '--_fade': 0, scale: 0.96 } as DOMKeyframesDefinition, prefersReducedMotion() ? { duration: 0 } : { duration: 0.2, ease: 'easeIn' }).then(
       () => this.dispatchEvent(new CustomEvent('toast-exited', { detail: this.item.id, bubbles: true })),
     );
   }
