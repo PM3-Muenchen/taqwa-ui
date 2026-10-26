@@ -15,6 +15,11 @@
     display: flex;
   }
 
+  /* A submenu trigger is a menu row, so it fills the popup's width like its siblings. */
+  ::slotted([slot="trigger"]) {
+    flex: 1;
+  }
+
   .taqwa-menu-popup {
     @apply tq:glass-surface tq:min-w-44 tq:overflow-y-auto tq:rounded-surface tq:p-1 tq:outline-none;
 
