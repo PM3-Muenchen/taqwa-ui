@@ -14,7 +14,7 @@
 
 ## Package boundaries
 
-- This is one publishable ESM package. Every top-level `src/<name>.ts` (not stories) is a build entry and a public subpath (`@pm3munchen/taqwa-ui/<name>`, via the `./*` export). `src/index.ts` is the barrel that re-exports all of them; importing anything registers its custom elements, so `sideEffects` must stay `true`. `src/internal/` is private.
+- This is one publishable ESM package. Every top-level `src/<name>.ts` (not stories) is a build entry and a public subpath (`@pm3muenchen/taqwa-ui/<name>`, via the `./*` export). `src/index.ts` is the barrel that re-exports all of them; importing anything registers its custom elements, so `sideEffects` must stay `true`. `src/internal/` is private.
 - Components are Lit elements in Shadow DOM, registered with `@customElement('taqwa-*')` and declared in `HTMLElementTagNameMap`. Expose a `part="base"` on the inner element; form controls extend `TaqwaFormControl` (`src/internal/form-control.ts`, `formAssociated` + `ElementInternals`).
 - `pnpm build` produces `dist/<name>.js` per entry and declarations; there is no global stylesheet. Each component imports its own `src/<component>.css?inline` (which imports `src/theme.css`) into `static styles`.
 - Styles use Tailwind v4 with `source(none)`: only library CSS is compiled. Keep component selectors in the `taqwa-*` namespace and Tailwind utilities prefixed `tq:`; the package deliberately ships no CSS reset, so reset native element styles inside the shadow root as needed.

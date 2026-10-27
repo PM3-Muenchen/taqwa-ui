@@ -1,5 +1,5 @@
 ---
-"@pm3munchen/taqwa-ui": patch
+"@pm3muenchen/taqwa-ui": patch
 ---
 
 Publish using changeset

@@ -170,7 +170,7 @@ Taqwa is calm, airy and professional: **Frosted Meadow**. Deep evergreen ink sit
 
 The material is **visible frosted glass**: floating surfaces are translucent ivory panes over a strong, saturated blur, with a white top highlight, a hairline edge, a soft green-tinted shadow and a fine film grain. Controls are calm and flat; solid buttons get a faint vertical sheen and an inner highlight. Motion stays plain: short fades, and buttons give a barely-there 0.98 press.
 
-Components are Lit web components (Shadow DOM) that work in plain HTML, React (19 natively, or with the `@pm3munchen/taqwa-ui/react` wrappers) and Astro.
+Components are Lit web components (Shadow DOM) that work in plain HTML, React (19 natively, or with the `@pm3muenchen/taqwa-ui/react` wrappers) and Astro.
 
 ## Colors
 

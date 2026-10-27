@@ -1,5 +1,5 @@
 ---
-"@pm3munchen/taqwa-ui": patch
+"@pm3muenchen/taqwa-ui": patch
 ---
 
 Buttons use a smaller label: 14px on mobile and 13px from 768px. Their height now comes from padding instead of a minimum height (9px × 14px on mobile, 8px × 12px from 768px, so 38px and 34px tall), and it follows `--taqwa-padding-scale`.

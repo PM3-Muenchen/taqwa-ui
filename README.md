@@ -7,7 +7,7 @@ See [`DESIGN.md`](./DESIGN.md) for the design system (tokens, roles, spacing, mo
 ## Install
 
 ```sh
-pnpm add @pm3munchen/taqwa-ui
+pnpm add @pm3muenchen/taqwa-ui
 ```
 
 ### Fonts
@@ -27,8 +27,8 @@ You can also self-host them with Fontsource (`@fontsource-variable/inter`, …) 
 Import everything, or only the components you use:
 
 ```ts
-import '@pm3munchen/taqwa-ui'; // registers every element
-import '@pm3munchen/taqwa-ui/select'; // registers only <taqwa-select> and its parts
+import '@pm3muenchen/taqwa-ui'; // registers every element
+import '@pm3muenchen/taqwa-ui/select'; // registers only <taqwa-select> and its parts
 ```
 
 ```html
@@ -51,11 +51,11 @@ React 19 supports custom elements natively. Add the JSX types once:
 
 ```ts
 // e.g. src/taqwa.d.ts
-import '@pm3munchen/taqwa-ui/jsx';
+import '@pm3muenchen/taqwa-ui/jsx';
 ```
 
 ```tsx
-import '@pm3munchen/taqwa-ui/select';
+import '@pm3muenchen/taqwa-ui/select';
 
 <taqwa-select name="fruit" onvalue-change={(e) => setFruit(e.detail.value)}>…</taqwa-select>
 ```
@@ -63,7 +63,7 @@ import '@pm3munchen/taqwa-ui/select';
 On React 18, or if you prefer `onValueChange`-style props, use the generated [`@lit/react`](https://lit.dev/docs/frameworks/react/) wrappers:
 
 ```tsx
-import { Select, SelectItem } from '@pm3munchen/taqwa-ui/react';
+import { Select, SelectItem } from '@pm3muenchen/taqwa-ui/react';
 
 <Select name="fruit" onValueChange={(e) => setFruit(e.detail.value)}>
   <SelectItem value="apple">Apple</SelectItem>
@@ -83,8 +83,8 @@ Register the elements in a client script. The modules are safe to import during 
 </taqwa-dialog>
 
 <script>
-  import '@pm3munchen/taqwa-ui/dialog';
-  import '@pm3munchen/taqwa-ui/button';
+  import '@pm3muenchen/taqwa-ui/dialog';
+  import '@pm3muenchen/taqwa-ui/button';
 </script>
 ```
 
