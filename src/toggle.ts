@@ -1,5 +1,6 @@
 import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { markIconOnly } from './internal/icons';
 import { bindGlassMotion } from './internal/motion';
 import styles from './toggle.css?inline';
 
@@ -32,7 +33,7 @@ export class TaqwaToggle extends LitElement {
       aria-pressed=${this.pressed}
       ?disabled=${this.#isDisabled()}
       @click=${this.#onClick}
-    ><slot></slot></button>`;
+    ><slot @slotchange=${markIconOnly}></slot></button>`;
   }
 
   connectedCallback() {

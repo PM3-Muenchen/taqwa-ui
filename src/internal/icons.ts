@@ -38,3 +38,14 @@ export function icon(node: IconNode, size: string | number = '1em'): ReturnType<
     `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${inner}</svg>`,
   );
 }
+
+/**
+ * Slotchange handler for buttons: sets `data-icon-only` on the host when the slot holds no text, so it can be square.
+ * shortcut: editing text inside an already slotted node fires no slotchange; re-slot the content if that matters.
+ */
+export function markIconOnly(event: Event): void {
+  const slot = event.target as HTMLSlotElement;
+  const nodes = slot.assignedNodes({ flatten: true });
+  const iconOnly = nodes.some((n) => n.nodeType === 1) && nodes.every((n) => n.nodeName.toLowerCase() === 'svg' || !n.textContent?.trim());
+  (slot.getRootNode() as ShadowRoot).host.toggleAttribute('data-icon-only', iconOnly);
+}

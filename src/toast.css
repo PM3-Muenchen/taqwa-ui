@@ -108,15 +108,16 @@
   }
 
   .taqwa-toast-action {
-    @apply tq:focus-ring tq:inline-flex tq:h-9 tq:cursor-pointer tq:items-center tq:rounded-control tq:bg-secondary tq:px-3 tq:text-sm tq:font-medium tq:text-secondary-foreground;
+    @apply tq:focus-ring tq:button-size tq:inline-flex tq:cursor-pointer tq:items-center tq:rounded-control tq:bg-secondary tq:font-medium tq:text-secondary-foreground;
 
     border: none;
     font-family: inherit;
   }
 
   .taqwa-toast-close {
-    @apply tq:focus-ring tq:flex tq:size-11 tq:shrink-0 tq:cursor-pointer tq:items-center tq:justify-center tq:rounded-control tq:text-muted-foreground tq:md:size-8;
+    @apply tq:focus-ring tq:button-size tq:flex tq:shrink-0 tq:cursor-pointer tq:items-center tq:justify-center tq:rounded-control tq:text-muted-foreground;
 
+    padding-inline: var(--_button-py);
     border: none;
     background: transparent;
     font-family: inherit;

@@ -85,8 +85,9 @@
   }
 
   .taqwa-dialog__close {
-    @apply tq:glass-interactive tq:focus-ring tq:inline-flex tq:size-11 tq:cursor-pointer tq:items-center tq:justify-center tq:rounded-control tq:md:size-10;
+    @apply tq:glass-interactive tq:focus-ring tq:button-size tq:inline-flex tq:cursor-pointer tq:items-center tq:justify-center tq:rounded-control;
 
+    padding-inline: var(--_button-py);
     --_glass-fill: transparent;
     position: absolute;
     top: 0.5rem;

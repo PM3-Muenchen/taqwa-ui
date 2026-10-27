@@ -13,20 +13,14 @@
 
   .taqwa-otp-field__input {
     margin: 0;
-    padding: 0;
     font: inherit;
     min-width: 0;
-    width: 2.75rem;
-    height: 2.75rem;
 
-    @apply tq:focus-ring tq:rounded-control tq:border tq:border-input tq:bg-field tq:text-center tq:text-body tq:text-foreground tq:tabular-nums tq:md:size-10 tq:md:text-sm;
-  }
+    @apply tq:control-size tq:focus-ring tq:rounded-control tq:border tq:border-input tq:bg-field tq:text-center tq:text-foreground tq:tabular-nums;
 
-  @media (width >= 48rem) {
-    .taqwa-otp-field__input {
-      width: 2.5rem;
-      height: 2.5rem;
-    }
+    /* Square: the height comes from the padding, the width matches it. */
+    padding-inline: 0;
+    width: var(--_control-h);
   }
 
   .taqwa-otp-field__input[aria-invalid="true"] {
@@ -35,11 +29,5 @@
 
   .taqwa-otp-field__input:disabled {
     @apply tq:opacity-50;
-  }
-
-  @media (any-pointer: coarse) {
-    .taqwa-otp-field__input {
-      font-size: 1rem;
-    }
   }
 }

@@ -10,9 +10,12 @@
   }
 
   .taqwa-collapsible-trigger {
-    @apply tq:glass-interactive tq:focus-ring tq:control-size tq:inline-flex tq:cursor-pointer tq:items-center tq:gap-2 tq:rounded-control tq:border tq:border-border tq:font-heading tq:font-medium tq:select-none tq:disabled:cursor-not-allowed tq:disabled:opacity-50;
+    @apply tq:glass-interactive tq:focus-ring tq:button-size tq:inline-flex tq:cursor-pointer tq:items-center tq:gap-2 tq:rounded-control tq:font-heading tq:font-medium tq:select-none tq:disabled:cursor-not-allowed tq:disabled:opacity-50;
 
     margin: 0;
+    /* Inset hairline, like the secondary button, so the border adds no height. */
+    border: none;
+    box-shadow: inset 0 0 0 1px var(--tq-color-border);
     font-family: inherit;
     color: var(--tq-color-foreground);
     --_glass-fill: var(--tq-color-field);

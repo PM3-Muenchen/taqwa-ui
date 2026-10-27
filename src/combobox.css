@@ -8,7 +8,11 @@
   }
 
   .taqwa-combobox-field {
-    @apply tq:flex tq:min-h-11 tq:w-full tq:cursor-text tq:items-center tq:gap-1 tq:rounded-control tq:border tq:border-input tq:bg-field tq:py-1 tq:pr-1 tq:pl-2.5 tq:md:min-h-10;
+    @apply tq:control-size tq:flex tq:w-full tq:cursor-text tq:items-center tq:gap-1 tq:rounded-control tq:border tq:border-input tq:bg-field;
+
+    /* The inner row carries the rest of the field padding, so the field stays button height; 28px chips give 4px around them. */
+    padding-block: 4px;
+    padding-inline: calc(var(--_control-px) - 0.25rem) 2px;
   }
 
   .taqwa-combobox-field:focus-within {
@@ -41,11 +45,12 @@
   }
 
   .taqwa-combobox-input {
-    @apply tq:min-h-9 tq:min-w-24 tq:flex-1 tq:bg-transparent tq:px-1 tq:text-body tq:text-foreground tq:placeholder:text-muted-foreground tq:md:text-sm;
+    @apply tq:min-w-24 tq:flex-1 tq:bg-transparent tq:px-1 tq:text-foreground tq:placeholder:text-muted-foreground;
 
+    padding-block: calc(var(--_control-py) - 4px);
     border: 0;
     outline: none;
-    font-family: inherit;
+    font: inherit;
   }
 
   .taqwa-combobox-actions {
@@ -53,8 +58,11 @@
   }
 
   .taqwa-combobox-button {
-    @apply tq:flex tq:size-8 tq:cursor-pointer tq:items-center tq:justify-center tq:rounded-control tq:bg-transparent tq:p-0 tq:text-muted-foreground tq:hover:text-foreground tq:disabled:cursor-not-allowed;
+    @apply tq:flex tq:cursor-pointer tq:items-center tq:justify-center tq:rounded-control tq:bg-transparent tq:p-0 tq:text-muted-foreground tq:hover:text-foreground tq:disabled:cursor-not-allowed;
 
+    /* Field height minus the 1px borders and 4px padding. */
+    width: calc(var(--_control-h) - 10px);
+    height: calc(var(--_control-h) - 10px);
     border: 0;
   }
 }

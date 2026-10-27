@@ -54,7 +54,7 @@
   }
 
   .taqwa-tab {
-    @apply tq:glass-interactive tq:control-size tq:flex tq:w-full tq:cursor-pointer tq:items-center tq:justify-center tq:gap-2 tq:rounded-control tq:font-heading tq:font-medium tq:whitespace-nowrap tq:select-none tq:text-muted-foreground;
+    @apply tq:glass-interactive tq:button-size tq:flex tq:w-full tq:cursor-pointer tq:items-center tq:justify-center tq:gap-2 tq:rounded-control tq:font-heading tq:font-medium tq:whitespace-nowrap tq:select-none tq:text-muted-foreground;
 
     --_glass-fill: transparent;
   }

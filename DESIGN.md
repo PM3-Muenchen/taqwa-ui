@@ -58,11 +58,16 @@ typography:
     fontSize: 14px
     fontWeight: 400
     lineHeight: 20px
-  label-md:
+  label-mobile:
     fontFamily: Inter
     fontSize: 14px
     fontWeight: 500
     lineHeight: 20px
+  label-desktop:
+    fontFamily: Inter
+    fontSize: 13px
+    fontWeight: 500
+    lineHeight: 18px
   caption:
     fontFamily: Inter
     fontSize: 13px
@@ -81,8 +86,10 @@ spacing:
   2xl: 32px
   control-height-mobile: 44px
   control-height-desktop: 40px
-  control-padding-mobile: 16px
-  control-padding-desktop: 14px
+  button-padding-x-mobile: 14px
+  button-padding-x-desktop: 12px
+  button-padding-y-mobile: 9px
+  button-padding-y-desktop: 8px
   surface-padding: 24px
   padding-scale: 1
   breakpoint-md: 768px
@@ -90,10 +97,9 @@ components:
   button-primary:
     backgroundColor: "{colors.primary}"
     textColor: "{colors.on-primary}"
-    typography: "{typography.label-md}"
+    typography: "{typography.label-mobile}"
     rounded: "{rounded.control}"
-    height: "{spacing.control-height-mobile}"
-    padding: "{spacing.control-padding-mobile}"
+    padding: "{spacing.button-padding-y-mobile} {spacing.button-padding-x-mobile}"
   button-secondary:
     backgroundColor: "{colors.secondary}"
     textColor: "{colors.on-secondary}"
@@ -110,8 +116,7 @@ components:
     backgroundColor: "{colors.field}"
     textColor: "{colors.on-surface}"
     rounded: "{rounded.control}"
-    height: "{spacing.control-height-mobile}"
-    padding: "{spacing.control-padding-mobile}"
+    padding: "{spacing.button-padding-y-mobile} {spacing.button-padding-x-mobile}"
   input-field-outline:
     backgroundColor: "{colors.input}"
     size: 1px
@@ -161,7 +166,7 @@ components:
 
 ## Overview
 
-Taqwa is calm, airy and professional: **Frosted Meadow**. Deep evergreen ink sits on frosted ivory glass, and the glass floats over a solid Ivory page. A single deep, refined green carries the action; lime cream marks selection. Layouts are **relaxed**: generous padding and gaps, never cramped. They are built **mobile first**, with comfortable 44px touch targets that tighten slightly on laptops (≥ 768px).
+Taqwa is calm, airy and professional: **Frosted Meadow**. Deep evergreen ink sits on frosted ivory glass, and the glass floats over a solid Ivory page. A single deep, refined green carries the action; lime cream marks selection. Layouts are **relaxed**: generous padding and gaps, never cramped. They are built **mobile first**: 44px rows and padding-sized buttons and fields (38px) that tighten slightly on laptops (≥ 768px).
 
 The material is **visible frosted glass**: floating surfaces are translucent ivory panes over a strong, saturated blur, with a white top highlight, a hairline edge, a soft green-tinted shadow and a fine film grain. Controls are calm and flat; solid buttons get a faint vertical sheen and an inner highlight. Motion stays plain: short fades, and buttons give a barely-there 0.98 press.
 
@@ -235,13 +240,13 @@ The package ships no font files. Load them in the app, for example from Google F
 
 ## Layout
 
-- **Mobile first** and fluid. Components fill their container width on small screens. At the `md` breakpoint (768px) controls shrink from 44px to 40px tall and their horizontal padding goes from 16px to 14px.
+- **Mobile first** and fluid. Components fill their container width on small screens. At the `md` breakpoint (768px) buttons and fields shrink from 38px to 34px tall, and so do toggles, tabs, the collapsible trigger and navigation links (see Buttons and Inputs). Rows go from 44px to 40px.
 - **Spacing** uses a 4px base with a relaxed rhythm:
   - 12–16px between related items inside a component
   - 24px padding inside dialogs, drawers, popovers and cards
   - 24px between form fields
   - 8px between a label and its control
-- **Padding density:** `--taqwa-padding-scale` (default `1`) multiplies every component's padding, including the control padding and the track padding behind the 10px track radius. Gaps, control heights and fixed geometry (switch track, the dialog's close-button inset) don't change. Try Compact `0.75`, Comfortable `1.25` or Spacious `1.5`; the same steps are the modes of the Figma `Taqwa/Padding` collection and the Storybook "Padding" toolbar.
+- **Padding density:** `--taqwa-padding-scale` (default `1`) multiplies every component's padding, including the control padding and the track padding behind the 10px track radius. Gaps, row heights and fixed geometry (switch track, the dialog's close-button inset) don't change; buttons and fields are the exception, since their height is padding. Try Compact `0.75`, Comfortable `1.25` or Spacious `1.5`; the same steps are the modes of the Figma `Taqwa/Padding` collection and the Storybook "Padding" toolbar.
 - **Overlays on mobile** become sheets: drawers are full-width bottom sheets with snap points, and toasts sit bottom centre at full width minus 16px. On wider screens, toasts move to the bottom right (max 24rem) and side drawers are at most 26rem wide.
 
 ## Elevation & Depth
@@ -278,8 +283,8 @@ Bottom sheets round only their top corners.
 
 All 37 Base UI components are available as `taqwa-*` custom elements.
 
-- **Buttons:** primary (deep Green with sheen), secondary (Lime cream), tertiary (transparent with a faint Evergreen wash on hover), destructive (Red with sheen). All 44px tall on mobile and 40px from 768px.
-- **Inputs:** a translucent white field with a clear 1px input-coloured outline. Focus shows a 2px Green ring offset by 2px. The invalid state uses a red outline with the message below in red.
+- **Buttons:** primary (deep Green with sheen), secondary (Lime cream), tertiary (transparent with a faint Evergreen wash on hover), destructive (Red with sheen). All 38px tall on mobile and 34px from 768px, with labels one step below body text: 14px / 20px on mobile and 13px / 18px from 768px. The height comes from padding (9px × 14px on mobile, 8px × 12px from 768px), not a minimum height, so it follows the padding scale. Every button-like control uses the same sizing: toggles, tabs, the collapsible trigger, navigation menu links and the toast action. Icons in buttons and toggles are 16px. Icon-only buttons, toggles and close buttons use the vertical padding on all sides, so they are square: 34px on mobile and 32px from 768px.
+- **Inputs:** a translucent white field with a clear 1px input-coloured outline. Focus shows a 2px Green ring offset by 2px. The invalid state uses a red outline with the message below in red. Every field (input, select trigger, combobox, autocomplete, number field, OTP field) is exactly as tall as a button: the same padding with the 1px outline taken out of it, and the same 14px / 13px text, which goes up to 16px on touch devices so iOS doesn't zoom. Number field steppers and OTP cells are squares of that height.
 - **Selection controls:** checked state is a Green fill with an Ivory icon. Pressed toggles and selected options use Lime cream.
 - **Lists and menus:** 44px rows on mobile and 36–40px from 768px. Rows are transparent; the highlighted row gets the faint Evergreen wash.
 - **Floating surfaces** (popover, menu, select, tooltip, preview card, toast, dialog, drawer, toolbar) all use the frosted glass material. The popover arrow uses the glass fill and draws only the half outside the popup.
@@ -289,7 +294,7 @@ All 37 Base UI components are available as `taqwa-*` custom elements.
 - Do keep the page solid Ivory. The glass reads as a calm card on it; it frosts visibly only over content such as a photo, illustration or gradient.
 - Do use Green for the single most important action in a view. Use secondary or tertiary for everything else.
 - Do pair Lime cream with Evergreen text only. Never put Ivory or Green text on Lime cream for body copy.
-- Do keep 44px touch targets on mobile, even when the visual mark is smaller (checkbox 20px, slider thumb).
+- Do keep 44px touch targets on mobile for rows and checkable controls, even when the visual mark is smaller (checkbox 20px, slider thumb). Buttons, button-like controls and fields are the exception: their height comes from padding, 38px with text on mobile at the default density and 34px when icon-only.
 - Do reserve Instrument Serif for display moments. Don't use it inside controls.
 - Don't stack glass on glass more than one level deep (a popup over a glass card is the limit), because the blur turns muddy.
 - Don't put a non-modal dialog inside an element with `backdrop-filter`: that element becomes its containing block. Modal dialogs and popups live in the top layer and are fine.

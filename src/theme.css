@@ -108,18 +108,50 @@
   );
 }
 
-/* Shared control sizing: 44px touch targets on mobile, 40px from 48rem. */
+/*
+ * Field sizing: the button sizing with the 1px border taken out of the padding, so a field is exactly as tall as a
+ * button (38px, 34px from 48rem). `--_control-h` is that height, for square parts (steppers, OTP cells). Touch
+ * devices get 16px text so iOS doesn't zoom on focus.
+ */
 @utility control-size {
-  min-height: 2.75rem;
-  padding-inline: var(--tq-padding-4);
-  font-size: var(--tq-text-body);
-  line-height: var(--tq-text-body--line-height);
+  --_control-py: calc(0.5625rem * var(--tq-padding-scale) - 1px);
+  --_control-px: calc(0.875rem * var(--tq-padding-scale) - 1px);
+  --_control-h: calc(1.375rem + 2 * var(--_control-py));
+  padding-block: var(--_control-py);
+  padding-inline: var(--_control-px);
+  font-size: var(--tq-text-sm);
+  line-height: var(--tq-text-sm--line-height);
 
   @media (width >= 48rem) {
-    min-height: 2.5rem;
-    padding-inline: calc(0.875rem * var(--tq-padding-scale));
-    font-size: var(--tq-text-sm);
-    line-height: var(--tq-text-sm--line-height);
+    --_control-py: calc(var(--tq-padding-2) - 1px);
+    --_control-px: calc(var(--tq-padding-3) - 1px);
+    --_control-h: calc(1.25rem + 2 * var(--_control-py));
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+  }
+
+  @media (any-pointer: coarse) {
+    font-size: 1rem;
+  }
+}
+
+/*
+ * Button sizing: height comes from padding, not min-height. 9px + 20px line + 9px = 38px on mobile, 8 + 18 + 8 = 34px
+ * from 48rem. Icon-only controls set `padding-inline: var(--_button-py)` for a square.
+ */
+@utility button-size {
+  --_button-py: calc(0.5625rem * var(--tq-padding-scale));
+  --_button-px: calc(0.875rem * var(--tq-padding-scale));
+  padding-block: var(--_button-py);
+  padding-inline: var(--_button-px);
+  font-size: var(--tq-text-sm);
+  line-height: var(--tq-text-sm--line-height);
+
+  @media (width >= 48rem) {
+    --_button-py: var(--tq-padding-2);
+    --_button-px: var(--tq-padding-3);
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
   }
 }
 

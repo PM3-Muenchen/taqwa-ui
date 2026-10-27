@@ -6,7 +6,7 @@
   }
 
   .taqwa-toggle {
-    @apply tq:glass-interactive tq:control-size tq:focus-ring tq:inline-flex tq:min-w-11 tq:cursor-pointer tq:items-center tq:justify-center tq:gap-2 tq:rounded-control tq:font-medium tq:md:min-w-10 tq:disabled:cursor-not-allowed tq:disabled:opacity-50;
+    @apply tq:glass-interactive tq:button-size tq:focus-ring tq:inline-flex tq:cursor-pointer tq:items-center tq:justify-center tq:gap-2 tq:rounded-control tq:font-medium tq:disabled:cursor-not-allowed tq:disabled:opacity-50;
 
     border: none;
     font-family: inherit;
@@ -19,5 +19,16 @@
   .taqwa-toggle[aria-pressed="true"] {
     --_bg: var(--tq-color-secondary);
     --_fg: var(--tq-color-secondary-foreground);
+  }
+
+  /* Icons are 16px; an icon-only toggle is square, with the vertical padding on all sides. */
+  ::slotted(svg) {
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  :host([data-icon-only]) .taqwa-toggle {
+    padding-inline: var(--_button-py);
   }
 }

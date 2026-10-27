@@ -1,5 +1,6 @@
 import { LitElement, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { markIconOnly } from './internal/icons';
 import { bindGlassMotion, type MotionOptions } from './internal/motion';
 import styles from './button.css?inline';
 
@@ -28,7 +29,7 @@ export class TaqwaButton extends LitElement {
       type="button"
       ?disabled=${this.disabled}
       @click=${this.#onClick}
-    ><slot></slot></button>`;
+    ><slot @slotchange=${markIconOnly}></slot></button>`;
   }
 
   connectedCallback() {
