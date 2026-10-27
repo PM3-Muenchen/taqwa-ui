@@ -47,7 +47,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PM3-Munchen/taqwa-ui.git"
+    "url": "git+https://github.com/PM3-Muenchen/taqwa-ui.git"
   },
   "publishConfig": {
     "access": "public"

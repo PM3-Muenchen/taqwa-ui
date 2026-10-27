@@ -148,4 +148,4 @@ pnpm build-storybook
 
 Releases use [Changesets](https://changesets.dev). In a PR that changes the published package, run `pnpm changeset` and commit the generated `.changeset/*.md`. On `main`, the release workflow keeps a "Version Packages" PR up to date. Merging it bumps the version, writes `CHANGELOG.md`, publishes to npm and creates the `v<version>` tag and GitHub Release.
 
-Publishing authenticates with npm [trusted publishing](https://docs.npmjs.com/trusted-publishers) (GitHub OIDC); there is no npm token. The trusted publisher on npm is `PM3-Munchen/taqwa-ui`, workflow `release.yml`.
+Publishing authenticates with npm [trusted publishing](https://docs.npmjs.com/trusted-publishers) (GitHub OIDC); there is no npm token. The trusted publisher on npm is `PM3-Muenchen/taqwa-ui`, workflow `release.yml`.

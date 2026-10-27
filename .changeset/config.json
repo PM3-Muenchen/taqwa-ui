@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@4/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "PM3-Munchen/taqwa-ui" }],
+  "changelog": ["@changesets/changelog-github", { "repo": "PM3-Muenchen/taqwa-ui" }],
   "baseBranch": "main",
   "access": "public"
 }
