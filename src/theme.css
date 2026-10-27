@@ -9,7 +9,7 @@
  */
 @theme {
   --color-foreground: var(--taqwa-color-foreground, #152614);
-  --color-background: var(--taqwa-color-background, #fafff2);
+  --color-background: var(--taqwa-color-background, #F9FFF1);
   --color-primary: var(--taqwa-color-primary, #21602a);
   --color-primary-foreground: var(--taqwa-color-primary-foreground, #fafff2);
   --color-secondary: var(--taqwa-color-secondary, #d9f2a6);
