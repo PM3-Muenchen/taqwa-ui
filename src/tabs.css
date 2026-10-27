@@ -39,7 +39,7 @@
   .taqwa-tabs-list {
     @apply tq:relative tq:flex tq:gap-1 tq:p-1;
     /* Translucent track so the page tints through; radius = tab radius + padding. */
-    border-radius: calc(var(--tq-radius-control) + 0.25rem);
+    border-radius: calc(var(--tq-radius-control) + var(--tq-padding-1));
     background-color: color-mix(in oklab, var(--tq-color-muted) 60%, transparent);
     box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--tq-color-foreground) 7%, transparent);
   }

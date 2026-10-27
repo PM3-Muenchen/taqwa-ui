@@ -120,6 +120,7 @@ Every colour, radius and font is a `--taqwa-*` custom property. Set any of them 
 :root {
   --taqwa-color-primary: #1f5f19;
   --taqwa-radius-control: 2px;
+  --taqwa-padding-scale: 0.75; /* tighter padding in every component */
 }
 ```
 

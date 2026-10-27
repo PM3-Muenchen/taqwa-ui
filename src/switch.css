@@ -32,7 +32,7 @@
     font: inherit;
     cursor: inherit;
 
-    @apply tq:focus-ring tq:relative tq:inline-flex tq:h-6 tq:w-11 tq:shrink-0 tq:items-center tq:rounded-full tq:bg-input tq:p-0.5;
+    @apply tq:focus-ring tq:relative tq:inline-flex tq:h-6 tq:w-11 tq:shrink-0 tq:items-center tq:rounded-full tq:bg-input tq:p-[0.125rem];
   }
 
   .taqwa-switch[aria-checked="true"] {

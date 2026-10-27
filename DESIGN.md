@@ -84,6 +84,7 @@ spacing:
   control-padding-mobile: 16px
   control-padding-desktop: 14px
   surface-padding: 24px
+  padding-scale: 1
   breakpoint-md: 768px
 components:
   button-primary:
@@ -240,6 +241,7 @@ The package ships no font files. Load them in the app, for example from Google F
   - 24px padding inside dialogs, drawers, popovers and cards
   - 24px between form fields
   - 8px between a label and its control
+- **Padding density:** `--taqwa-padding-scale` (default `1`) multiplies every component's padding, including the control padding and the track padding behind the 10px track radius. Gaps, control heights and fixed geometry (switch track, the dialog's close-button inset) don't change. Try Compact `0.75`, Comfortable `1.25` or Spacious `1.5`; the same steps are the modes of the Figma `Taqwa/Padding` collection and the Storybook "Padding" toolbar.
 - **Overlays on mobile** become sheets: drawers are full-width bottom sheets with snap points, and toasts sit bottom centre at full width minus 16px. On wider screens, toasts move to the bottom right (max 24rem) and side drawers are at most 26rem wide.
 
 ## Elevation & Depth

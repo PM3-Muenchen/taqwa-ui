@@ -8,7 +8,7 @@
 
   .taqwa-toggle-group {
     @apply tq:flex tq:w-fit tq:max-w-full tq:flex-wrap tq:gap-1 tq:p-1;
-    border-radius: calc(var(--tq-radius-control) + 0.25rem);
+    border-radius: calc(var(--tq-radius-control) + var(--tq-padding-1));
     background-color: color-mix(in oklab, var(--tq-color-muted) 60%, transparent);
     box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--tq-color-foreground) 7%, transparent);
   }

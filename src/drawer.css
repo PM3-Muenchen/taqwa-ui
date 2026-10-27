@@ -27,13 +27,13 @@
   :host([side="bottom"]) .taqwa-dialog__popup {
     @apply tq:rounded-t-surface tq:rounded-b-none;
 
-    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(var(--tq-padding-6) + env(safe-area-inset-bottom, 0px));
   }
 
   :host([side="top"]) .taqwa-dialog__popup {
     @apply tq:rounded-t-none tq:rounded-b-surface;
 
-    padding-top: calc(1.5rem + env(safe-area-inset-top, 0px));
+    padding-top: calc(var(--tq-padding-6) + env(safe-area-inset-top, 0px));
   }
 
   :host([side="left"]) .taqwa-dialog__popup,

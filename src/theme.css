@@ -39,6 +39,22 @@
   --radius-control: var(--taqwa-radius-control, 0.375rem);
   --radius-surface: var(--taqwa-radius-surface, 0.625rem);
 
+  /*
+   * Padding density: `p*-N` utilities resolve through these keys, so `--taqwa-padding-scale` (default 1)
+   * scales every component's padding while gaps, sizes and control heights stay put. Unlisted steps don't scale.
+   */
+  --padding-scale: var(--taqwa-padding-scale, 1);
+  --padding-0_5: calc(var(--tq-spacing) * 0.5 * var(--tq-padding-scale));
+  --padding-1: calc(var(--tq-spacing) * 1 * var(--tq-padding-scale));
+  --padding-1_5: calc(var(--tq-spacing) * 1.5 * var(--tq-padding-scale));
+  --padding-2: calc(var(--tq-spacing) * 2 * var(--tq-padding-scale));
+  --padding-2_5: calc(var(--tq-spacing) * 2.5 * var(--tq-padding-scale));
+  --padding-3: calc(var(--tq-spacing) * 3 * var(--tq-padding-scale));
+  --padding-4: calc(var(--tq-spacing) * 4 * var(--tq-padding-scale));
+  --padding-5: calc(var(--tq-spacing) * 5 * var(--tq-padding-scale));
+  --padding-6: calc(var(--tq-spacing) * 6 * var(--tq-padding-scale));
+  --padding-8: calc(var(--tq-spacing) * 8 * var(--tq-padding-scale));
+
   --blur-glass: var(--taqwa-glass-blur, 22px);
   --glass-saturate: var(--taqwa-glass-saturate, 160%);
   /* A soft white sheen that fades out over the top of the pane. */
@@ -95,13 +111,13 @@
 /* Shared control sizing: 44px touch targets on mobile, 40px from 48rem. */
 @utility control-size {
   min-height: 2.75rem;
-  padding-inline: 1rem;
+  padding-inline: var(--tq-padding-4);
   font-size: var(--tq-text-body);
   line-height: var(--tq-text-body--line-height);
 
   @media (width >= 48rem) {
     min-height: 2.5rem;
-    padding-inline: 0.875rem;
+    padding-inline: calc(0.875rem * var(--tq-padding-scale));
     font-size: var(--tq-text-sm);
     line-height: var(--tq-text-sm--line-height);
   }
