@@ -2,7 +2,7 @@ import { readdirSync } from 'node:fs';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 
-// One entry per public module (`src/<name>.ts`) so consumers can import `@pm3/taqwa-ui/<name>`.
+// One entry per public module (`src/<name>.ts`) so consumers can import `@pm3munchen/taqwa-ui/<name>`.
 const entries = Object.fromEntries(
   readdirSync('src')
     .filter((file) => file.endsWith('.ts') && !file.endsWith('.stories.ts') && !file.endsWith('.d.ts'))

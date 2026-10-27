@@ -14,7 +14,7 @@
 
 ## Package boundaries
 
-- This is one publishable ESM package. Every top-level `src/<name>.ts` (not stories) is a build entry and a public subpath (`@pm3/taqwa-ui/<name>`, via the `./*` export). `src/index.ts` is the barrel that re-exports all of them; importing anything registers its custom elements, so `sideEffects` must stay `true`. `src/internal/` is private.
+- This is one publishable ESM package. Every top-level `src/<name>.ts` (not stories) is a build entry and a public subpath (`@pm3munchen/taqwa-ui/<name>`, via the `./*` export). `src/index.ts` is the barrel that re-exports all of them; importing anything registers its custom elements, so `sideEffects` must stay `true`. `src/internal/` is private.
 - Components are Lit elements in Shadow DOM, registered with `@customElement('taqwa-*')` and declared in `HTMLElementTagNameMap`. Expose a `part="base"` on the inner element; form controls extend `TaqwaFormControl` (`src/internal/form-control.ts`, `formAssociated` + `ElementInternals`).
 - `pnpm build` produces `dist/<name>.js` per entry and declarations; there is no global stylesheet. Each component imports its own `src/<component>.css?inline` (which imports `src/theme.css`) into `static styles`.
 - Styles use Tailwind v4 with `source(none)`: only library CSS is compiled. Keep component selectors in the `taqwa-*` namespace and Tailwind utilities prefixed `tq:`; the package deliberately ships no CSS reset, so reset native element styles inside the shadow root as needed.
@@ -39,4 +39,6 @@
 
 ## Publishing
 
-- Publishing runs only on a published GitHub Release. Its `v<package-version>` tag must exactly match `package.json`; CI then validates, builds, builds Storybook, and publishes with the `NPM_TOKEN` secret.
+- Releases use Changesets. A change to the published package gets a `.changeset/*.md` (`pnpm changeset`); never edit `version` or `CHANGELOG.md` by hand. `.github/workflows/release.yml` opens the "Version Packages" PR on `main`; merging it publishes, tags and creates the GitHub Release.
+- npm auth is trusted publishing (OIDC) bound to the `release.yml` filename: don't rename it and don't add an npm token. Only the `publish` job gets `id-token: write`.
+- `.github/workflows/ci.yml` runs the checks above on every PR and push to `main`.

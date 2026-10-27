@@ -7,7 +7,7 @@ See [`DESIGN.md`](./DESIGN.md) for the design system (tokens, roles, spacing, mo
 ## Install
 
 ```sh
-pnpm add @pm3/taqwa-ui
+pnpm add @pm3munchen/taqwa-ui
 ```
 
 ### Fonts
@@ -27,8 +27,8 @@ You can also self-host them with Fontsource (`@fontsource-variable/inter`, …) 
 Import everything, or only the components you use:
 
 ```ts
-import '@pm3/taqwa-ui'; // registers every element
-import '@pm3/taqwa-ui/select'; // registers only <taqwa-select> and its parts
+import '@pm3munchen/taqwa-ui'; // registers every element
+import '@pm3munchen/taqwa-ui/select'; // registers only <taqwa-select> and its parts
 ```
 
 ```html
@@ -51,11 +51,11 @@ React 19 supports custom elements natively. Add the JSX types once:
 
 ```ts
 // e.g. src/taqwa.d.ts
-import '@pm3/taqwa-ui/jsx';
+import '@pm3munchen/taqwa-ui/jsx';
 ```
 
 ```tsx
-import '@pm3/taqwa-ui/select';
+import '@pm3munchen/taqwa-ui/select';
 
 <taqwa-select name="fruit" onvalue-change={(e) => setFruit(e.detail.value)}>…</taqwa-select>
 ```
@@ -63,7 +63,7 @@ import '@pm3/taqwa-ui/select';
 On React 18, or if you prefer `onValueChange`-style props, use the generated [`@lit/react`](https://lit.dev/docs/frameworks/react/) wrappers:
 
 ```tsx
-import { Select, SelectItem } from '@pm3/taqwa-ui/react';
+import { Select, SelectItem } from '@pm3munchen/taqwa-ui/react';
 
 <Select name="fruit" onValueChange={(e) => setFruit(e.detail.value)}>
   <SelectItem value="apple">Apple</SelectItem>
@@ -83,8 +83,8 @@ Register the elements in a client script. The modules are safe to import during 
 </taqwa-dialog>
 
 <script>
-  import '@pm3/taqwa-ui/dialog';
-  import '@pm3/taqwa-ui/button';
+  import '@pm3munchen/taqwa-ui/dialog';
+  import '@pm3munchen/taqwa-ui/button';
 </script>
 ```
 
@@ -145,4 +145,6 @@ pnpm build-storybook
 
 ## Publishing
 
-Create a GitHub Release whose tag is `v` followed by the package version, for example `v0.3.0`. The release workflow validates, builds and publishes to npm. Set the repository `NPM_TOKEN` secret to an npm automation token that is authorized to publish `@pm3/taqwa-ui`.
+Releases use [Changesets](https://changesets.dev). In a PR that changes the published package, run `pnpm changeset` and commit the generated `.changeset/*.md`. On `main`, the release workflow keeps a "Version Packages" PR up to date. Merging it bumps the version, writes `CHANGELOG.md`, publishes to npm and creates the `v<version>` tag and GitHub Release.
+
+Publishing authenticates with npm [trusted publishing](https://docs.npmjs.com/trusted-publishers) (GitHub OIDC); there is no npm token. The trusted publisher on npm is `PM3-Munchen/taqwa-ui`, workflow `release.yml`.
